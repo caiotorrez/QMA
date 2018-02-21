@@ -1,7 +1,7 @@
 package alunos;
 
 public enum InfoAluno {
-	
+
 	EMAIL {
 		public String setEmail(String email) {
 			if (!email.contains("@")) {
@@ -11,9 +11,8 @@ public enum InfoAluno {
 			}
 		}
 	};
-	
 
 	private InfoAluno() {
-		
+
 	}
 }
