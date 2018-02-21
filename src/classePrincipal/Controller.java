@@ -30,7 +30,7 @@ public class Controller {
 	}
 
 	public String getInfoAluno(String matricula, String atributo) {
-		return this.alunos.get(matricula).toString();
+		return this.alunos.get(matricula).
 	}
 
 }
