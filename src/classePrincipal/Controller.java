@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alunos.Aluno;
+import easyaccept.EasyAccept;
 
 public class Controller {
 
@@ -31,6 +32,11 @@ public class Controller {
 
 	public String getInfoAluno(String matricula, String atributo) {
 		return this.alunos.get(matricula).
+	}
+	
+	public static void main(String[] args) {
+		args = new String[] { "classePrincipal.Controller", "acceptance_test/us1_test.txt", "acceptance_test/us2_test.txt" };
+		EasyAccept.main(args);
 	}
 
 }
