@@ -1,10 +1,10 @@
-package classePrincipalTeste;
+package controllerTeste;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import classePrincipal.Controller;
+import controller.Controller;
 
 public class ControllerTeste {
 	private Controller controllerTeste = new Controller();
