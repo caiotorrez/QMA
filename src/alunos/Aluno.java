@@ -16,13 +16,6 @@ public class Aluno {
 		this.email = email;
 	}
 
-	public Aluno(String nome, String matricula, int codigoDoCurso, String email) {
-		this.nome = nome;
-		this.matricula = matricula;
-		this.codigoCurso = codigoDoCurso;
-		this.email = email;
-	}
-
 	public String getNome() {
 		return this.nome;
 	}
@@ -44,11 +37,35 @@ public class Aluno {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Aluno other = (Aluno) obj;
+		if (matricula == null) {
+			if (other.matricula != null)
+				return false;
+		} else if (!matricula.equals(other.matricula))
+			return false;
+		return true;
+	}
+	
+	@Override
 	public String toString() {
-		return this.telefone == null
-				? this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.email
-				: this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.telefone + " - "
-						+ this.email;
+		return this.telefone.equals("") ? 
+				this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.email : 
+					this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.telefone + " - " + this.email;
 	}
 
 }

@@ -1,8 +1,7 @@
 package classePrincipalTeste;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import classePrincipal.Controller;
@@ -10,10 +9,6 @@ import classePrincipal.Controller;
 public class ControllerTeste {
 	private Controller controllerTeste = new Controller();
 
-	@Before
-	public void setUp() {
-		controllerTeste.inicializar();
-	}
 
 	@Test
 	public void recuperaAlunoTeste() {
