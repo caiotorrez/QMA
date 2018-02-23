@@ -31,8 +31,10 @@ public class ControllerTeste {
 	public void listarAlunosTeste() {
 		controllerTeste.cadastrarAluno("Francis", "111222333", 55, "999-999", "francis@andrade.com");
 		controllerTeste.cadastrarAluno("Andrade", "333222111", 40, "999-999", "andrade@francis.com");
-		assertEquals("333222111 - Andrade - 40 - 999-999 - andrade@francis.com" + System.lineSeparator()
-				+ "111222333 - Francis - 55 - 999-999 - francis@andrade.com" + System.lineSeparator(), controllerTeste.listarAlunos());
+		assertEquals(
+				"333222111 - Andrade - 40 - 999-999 - andrade@francis.com" + System.lineSeparator()
+						+ "111222333 - Francis - 55 - 999-999 - francis@andrade.com" + System.lineSeparator(),
+				controllerTeste.listarAlunos());
 	}
 
 }
