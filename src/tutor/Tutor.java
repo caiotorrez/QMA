@@ -6,15 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 import alunos.Aluno;
+import cadastroExceptions.NullOuEmBrancoException;
 import definicaoException.DefinicaoException;
+import horarios.Horario;
 
-public class Tutor {
+public class Tutor implements Comparable<Tutor> {
 	
 	
 	private int notaAvaliacao;
 	private int qtAvaliacoes;
 	private double carteira;
-	private Map<String, String> horarios;
+	private Map<String, Horario> horarios;
 	private Map<String, Disciplina> disciplinas;
 	private List<String> locais;
 	private Aluno aluno;
@@ -34,8 +36,6 @@ public class Tutor {
 		} else {
 			this.disciplinas.put(disciplina.getID(), disciplina);
 		}
-		
-		
 	}
 	
 	public String exibeDisciplina() {
@@ -46,20 +46,33 @@ public class Tutor {
 		} return saida;
 	}
 	
-	public void addLocal(String local) {
+	private void checkCadastroLocao(String email, String local) {
+		if (email == null || email.trim().equals("")) {
+			throw new NullOuEmBrancoException("Erro no cadastrar local de atendimento: email nao pode ser vazio ou em branco");			
+		}
+		else if (local == null || local.trim().equals("")) {
+			throw new NullOuEmBrancoException("Erro no cadastrar local de atendimento: local nao pode ser vazio ou em branco");
+		}
+	}
+	public void addLocal(String email, String local) {
+		this.checkCadastroLocao(email, local);
 		this.locais.add(local);
 	}
 	
-	public void addHorario(String horario, String dia) {
-		this.horarios.put(horario, dia);
+	public void addHorario(Horario horario) {
+		this.horarios.put(horario.getDia(), horario);
 	}
 	
 	public boolean contemLocal(String local) {
 		return this.locais.contains(local);
 	}
 	
-	public boolean contemHorario(String horario, String dia) {
-		return this.horarios.containsValue(dia);
+	public boolean contemHorario(Horario horario) {
+		return this.horarios.containsValue(horario);
+	}
+	
+	public boolean contemEmail(String email) {
+		return this.aluno.getEmail().equals(email);
 	}
 
 	@Override
@@ -89,5 +102,10 @@ public class Tutor {
 	
 	public String toString() {
 		return aluno.toString();
+	}
+
+	@Override
+	public int compareTo(Tutor outroTutor) {
+		return this.aluno.compareTo(outroTutor.aluno);
 	}
 }

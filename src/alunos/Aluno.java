@@ -2,7 +2,7 @@ package alunos;
 
 import cadastroExceptions.NullOuEmBrancoException;
 
-public class Aluno {
+public class Aluno implements Comparable<Aluno> {
 
 	private String nome;
 	private String matricula;
@@ -10,13 +10,11 @@ public class Aluno {
 	private String telefone;
 	private String email;
 
-
 	
 	private void checkCadastro(String nome, String matricula, int codigoDoCurso, String telefone, String email) {
 		if (nome == null || nome.trim().equals("")) {
-			throw new NullOuEmBrancoException("aluno");
+			throw new NullOuEmBrancoException("Erro no cadastro de aluno: Nome nao pode ser vazio ou nulo");
 		}
-		
 	}
 	
 	
@@ -75,16 +73,15 @@ public class Aluno {
 	}
 	
 	@Override
+	public int compareTo(Aluno outroAluno) {
+		return this.nome.compareTo(outroAluno.nome);
+	}
+	
+	@Override
 	public String toString() {
 		return this.telefone.equals("") ? 
 				this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.email : 
 					this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.telefone + " - " + this.email;
 	}
-
-
-	//@Override
-	//public int compare(Aluno esseAluno, Aluno outroAluno) {
-		//return esseAluno.matricula.compareTo(outroAluno.matricula);
-	//}
 
 }
