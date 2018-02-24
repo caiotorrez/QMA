@@ -1,11 +1,19 @@
 package tutor;
 
+import definicaoException.NumeroForaDosLimitesException;
+
 public class Disciplina {
 
 	private String nomeDisciplina;
 	private int proficiencia;
 
 	public Disciplina(String nomeDisciplina, int proficiencia) {
+		if (nomeDisciplina == null || nomeDisciplina.trim().equals("")) {
+			throw new NullPointerException();
+		}
+		else if (proficiencia < 1 || proficiencia > 5) {
+			throw new NumeroForaDosLimitesException("Proficiencia invalida");
+		}
 		this.nomeDisciplina = nomeDisciplina;
 		this.proficiencia = proficiencia;
 	}

@@ -1,5 +1,7 @@
 package alunos;
 
+import cadastroExceptions.NullOuEmBrancoException;
+
 public class Aluno {
 
 	private String nome;
@@ -8,7 +10,18 @@ public class Aluno {
 	private String telefone;
 	private String email;
 
+
+	
+	private void checkCadastro(String nome, String matricula, int codigoDoCurso, String telefone, String email) {
+		if (nome == null || nome.trim().equals("")) {
+			throw new NullOuEmBrancoException("aluno");
+		}
+		
+	}
+	
+	
 	public Aluno(String nome, String matricula, int codigoDoCurso, String telefone, String email) {
+		this.checkCadastro(nome, matricula, codigoDoCurso, telefone, email);
 		this.nome = nome;
 		this.matricula = matricula;
 		this.codigoCurso = codigoDoCurso;
@@ -67,5 +80,11 @@ public class Aluno {
 				this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.email : 
 					this.matricula + " - " + this.nome + " - " + this.codigoCurso + " - " + this.telefone + " - " + this.email;
 	}
+
+
+	//@Override
+	//public int compare(Aluno esseAluno, Aluno outroAluno) {
+		//return esseAluno.matricula.compareTo(outroAluno.matricula);
+	//}
 
 }

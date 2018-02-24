@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import alunos.Aluno;
+import definicaoException.DefinicaoException;
 
 public class Tutor {
 	
@@ -28,7 +29,13 @@ public class Tutor {
 	}
 	
 	public void addDisciplina(Disciplina disciplina) {
-		this.disciplinas.put(disciplina.getID(), disciplina);
+		if (this.disciplinas.containsKey(disciplina.getID())) {
+			throw new DefinicaoException("papel", "Ja eh tutor dessa disciplina");
+		} else {
+			this.disciplinas.put(disciplina.getID(), disciplina);
+		}
+		
+		
 	}
 	
 	public String exibeDisciplina() {
@@ -81,6 +88,6 @@ public class Tutor {
 	}
 	
 	public String toString() {
-		return this.aluno.getMatricula() + " - " + this.aluno.getNome() + " - " + this.notaAvaliacao;
+		return aluno.toString();
 	}
 }
