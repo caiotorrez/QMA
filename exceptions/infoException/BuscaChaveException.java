@@ -1,4 +1,4 @@
-package InfoException;
+package infoException;
 
 public class BuscaChaveException extends RuntimeException {
 	

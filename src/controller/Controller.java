@@ -5,11 +5,11 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-import InfoException.BuscaChaveException;
-import InfoException.InfoException;
 import alunos.Aluno;
 import cadastroExceptions.EmailInvalidoException;
 import definicaoException.DefinicaoException;
+import infoException.BuscaChaveException;
+import infoException.InfoException;
 import tutor.Disciplina;
 import tutor.Tutor;
 
