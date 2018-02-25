@@ -1,14 +1,34 @@
+/**
+ * UNIVERSIDADE FEDERAL DE CAMPINA GRANDE - UFCG
+ * LABORATORIO DE PROGRAMACAO 2
+ * ALUNOS - CAIO TORRES - FRANCIVALDO CABRAL - LUAN CARLOS
+ * MATRICULAS -  -  - 116.110.100
+ * PROJETO FINAL - QUEM ME AJUDA
+ */
 package horarios;
 
 import cadastroExceptions.NullOuEmBrancoException;
 
+/**
+ * Classe horario
+ * @author 
+ * @version 1.0
+ */
 public class Horario {
 	
 	private String email;
 	private String dia;
 	private String horario;
 	
-	public void checkCadastro(String email, String horario, String dia) {
+	/**
+	 * Verifica os parametros de criacao do Objeto Horario
+	 * @param email, String com o email do tutor responsavel
+	 * @param horario, String com o horario para o atendimento
+	 * @param dia, String com dia para o atendimento
+	 * @exception Sera lancada quando algum parametro for passado como nulo ou vazio
+	 * @throws NullOuEmBrancoException
+	 */
+	public void checkCadastro(String email, String horario, String dia)throws NullOuEmBrancoException {
 		if (email == null || email.trim().equals("")) {
 			throw new NullOuEmBrancoException("Erro no cadastrar horario: email nao pode ser vazio ou em branco");
 		}
@@ -21,6 +41,12 @@ public class Horario {
 		}
 	}
 	
+	/**
+	 * Construtor de Horario
+	 * @param email, String com o email do tutor responsavel
+	 * @param horario, String com o horario para o atendimento
+	 * @param dia, String com dia para o atendimento
+	 */
 	public Horario(String email, String horario, String dia) {
 		this.checkCadastro(email, horario, dia);
 		this.email = email;
@@ -28,14 +54,26 @@ public class Horario {
 		this.horario = horario;
 	}
 	
+	/**
+	 * Retorna o email do Tutor responsavel pelo horario
+	 * @return String
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * Retorna o dia do Atendimento
+	 * @return String
+	 */
 	public String getDia() {
 		return dia;
 	}
 
+	/**
+	 * Retorna o horario do Atendimento
+	 * @return String
+	 */
 	public String getHorario() {
 		return horario;
 	}
