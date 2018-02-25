@@ -11,7 +11,7 @@ import cadastroExceptions.NullOuEmBrancoException;
 
 /**
  * CLASSE ALUNO, COMPORTA O OBJETO ALUNO
- * @author 
+ * @author Caio Torres
  * @version 1.0
  */
 public class Aluno implements Comparable<Aluno> {

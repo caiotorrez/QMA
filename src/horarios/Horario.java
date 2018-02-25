@@ -11,7 +11,7 @@ import cadastroExceptions.NullOuEmBrancoException;
 
 /**
  * Classe horario
- * @author 
+ * @author Caio Torres
  * @version 1.0
  */
 public class Horario {
