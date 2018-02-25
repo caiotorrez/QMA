@@ -43,7 +43,7 @@ public class AlunoTeste {
 	}
 
 	/**
-	 * Testa a Criacao do aluno com um telefone
+	 * Testa a Criacao do aluno sem um telefone
 	 */
 	@Test
 	public void toStringSemTelefoneTest() {
