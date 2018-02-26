@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /controller/
 /alunos/
 /cadastroExceptions/
@@ -6,3 +7,15 @@
 /infoException/
 /tutor/
 /controllerTeste/
+=======
+/alunos/
+/alunosTeste/
+/cadastroExceptions/
+/controller/
+/controllerTeste/
+/definicaoException/
+/horarios/
+/infoException/
+/main/
+/tutor/
+>>>>>>> a1d3502a313244e1e21fb7465228105872a06865

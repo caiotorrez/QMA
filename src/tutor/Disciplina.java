@@ -11,7 +11,7 @@ import definicaoException.NumeroForaDosLimitesException;
 
 /**
  * Classe Disciplina
- * @author 
+ * @author Caio Torres
  * @version 1.0
  */
 public class Disciplina {
