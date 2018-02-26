@@ -27,12 +27,7 @@ import tutor.Tutor;
 
 /**
  * Classe Controller, realiza as operacoes do Sistema
-<<<<<<< HEAD
- *
- * @author
-=======
  * @author Caio Torres
->>>>>>> a1d3502a313244e1e21fb7465228105872a06865
  * @version 1.0
  */
 public class Controller {
