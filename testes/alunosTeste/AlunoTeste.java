@@ -8,46 +8,49 @@
 package alunosTeste;
 
 import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
 
 import alunos.Aluno;
+import cadastroExceptions.NullOuEmBrancoException;
 
 /**
  * Classe de Testes, referentes a Aluno
- * @author 
+ * 
+ * @author
  * @version 1.0
  */
 public class AlunoTeste {
-	
-	private Aluno alunoTeste2;
 	private Aluno alunoTeste;
-	
+
 	/**
-	 * Inicia os alunos para os testes
+	 * Testa a criação de um Aluno com o nome nulo.
+	 * 
 	 * @throws Exception
 	 */
-	@Before
-	public void setUp() throws Exception {
-		this.alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");
-		this.alunoTeste2 = new Aluno("Francis", "111222333", 45, "", "francis@andrade.com");
-	}
-	
-	/**
-	 * Testa a Criacao do aluno com um telefone
-	 */
-	@Test
-	public void toStringComTelefoneTest() {
-		assertEquals("111222333 - Francis - 45 - 9999-9999 - francis@andrade.com", alunoTeste.toString());
+	@Test(expected = NullOuEmBrancoException.class)
+	public void nomeNuloTeste() throws Exception {
+		alunoTeste = new Aluno(null, "112233", 50, "000-000", "francis@andrade.com");
 	}
 
 	/**
-	 * Testa a Criacao do aluno sem um telefone
+	 * Testa a criação de um Aluno com o nome vazio.
+	 * 
+	 * @throws Exception
+	 */
+	@Test(expected = NullOuEmBrancoException.class)
+	public void nomeVazioTeste() throws Exception {
+		alunoTeste = new Aluno(" ", "112233", 50, "000-000", "francis@andrade.com");
+	}
+
+	/**
+	 * Testa a Criacao do aluno com um telefone.
+	 * 
+	 * @throws Exception
 	 */
 	@Test
-	public void toStringSemTelefoneTest() {
-		assertEquals("111222333 - Francis - 45 - francis@andrade.com", alunoTeste2.toString());
+	public void toStringComTelefoneTest() throws Exception {
+		alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");
+		assertEquals("111222333 - Francis - 45 - 9999-9999 - francis@andrade.com", alunoTeste.toString());
 	}
 
 }

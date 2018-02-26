@@ -11,41 +11,48 @@ import cadastroExceptions.NullOuEmBrancoException;
 
 /**
  * Classe horario
- * @author 
+ * 
+ * @author
  * @version 1.0
  */
 public class Horario {
-	
+
 	private String email;
 	private String dia;
 	private String horario;
-	
+
 	/**
 	 * Verifica os parametros de criacao do Objeto Horario
-	 * @param email, String com o email do tutor responsavel
-	 * @param horario, String com o horario para o atendimento
-	 * @param dia, String com dia para o atendimento
-	 * @exception Sera lancada quando algum parametro for passado como nulo ou vazio
+	 * 
+	 * @param email,
+	 *            String com o email do tutor responsavel
+	 * @param horario,
+	 *            String com o horario para o atendimento
+	 * @param dia,
+	 *            String com dia para o atendimento
+	 * @exception Sera
+	 *                lancada quando algum parametro for passado como nulo ou vazio
 	 * @throws NullOuEmBrancoException
 	 */
-	public void checkCadastro(String email, String horario, String dia)throws NullOuEmBrancoException {
+	public void checkCadastro(String email, String horario, String dia) throws NullOuEmBrancoException {
 		if (email == null || email.trim().equals("")) {
 			throw new NullOuEmBrancoException("Erro no cadastrar horario: email nao pode ser vazio ou em branco");
-		}
-		else if (dia == null || dia.trim().equals("")) {
+		} else if (dia == null || dia.trim().equals("")) {
 			throw new NullOuEmBrancoException("Erro no cadastrar horario: dia nao pode ser vazio ou em branco");
-		}
-		
-		else if (horario == null || horario.trim().equals("")) {
+		} else if (horario == null || horario.trim().equals("")) {
 			throw new NullOuEmBrancoException("Erro no cadastrar horario: horario nao pode ser vazio ou em branco");
 		}
 	}
-	
+
 	/**
 	 * Construtor de Horario
-	 * @param email, String com o email do tutor responsavel
-	 * @param horario, String com o horario para o atendimento
-	 * @param dia, String com dia para o atendimento
+	 * 
+	 * @param email,
+	 *            String com o email do tutor responsavel
+	 * @param horario,
+	 *            String com o horario para o atendimento
+	 * @param dia,
+	 *            String com dia para o atendimento
 	 */
 	public Horario(String email, String horario, String dia) {
 		this.checkCadastro(email, horario, dia);
@@ -53,9 +60,10 @@ public class Horario {
 		this.dia = dia;
 		this.horario = horario;
 	}
-	
+
 	/**
 	 * Retorna o email do Tutor responsavel pelo horario
+	 * 
 	 * @return String
 	 */
 	public String getEmail() {
@@ -64,6 +72,7 @@ public class Horario {
 
 	/**
 	 * Retorna o dia do Atendimento
+	 * 
 	 * @return String
 	 */
 	public String getDia() {
@@ -72,6 +81,7 @@ public class Horario {
 
 	/**
 	 * Retorna o horario do Atendimento
+	 * 
 	 * @return String
 	 */
 	public String getHorario() {
@@ -114,6 +124,5 @@ public class Horario {
 			return false;
 		return true;
 	}
-
 
 }

@@ -22,9 +22,7 @@ import horarios.Horario;
  * @author 
  * @version 1.0
  */
-public class Tutor implements Comparable<Tutor> {
-	
-	
+public class Tutor implements Comparable<Tutor> {	
 	private int notaAvaliacao;
 	private int qtAvaliacoes;
 	private double carteira;

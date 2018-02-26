@@ -11,19 +11,42 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import cadastroExceptions.EmailInvalidoException;
 import controller.Controller;
 
 /**
  * Classe de testes referente ao Controller do Sistema
- * @author 
+ * 
+ * @author
  * @version 1.0
  */
 public class ControllerTeste {
 	private Controller controllerTeste = new Controller();
 
+	@Test(expected = EmailInvalidoException.class)
+	public void cadastraAlunoEmailInvalidoTeste() throws Exception {
+		controllerTeste.cadastrarAluno("Francis", "111444555", 60, "666-999", "andrade.com@");
+	}
+
+	@Test(expected = EmailInvalidoException.class)
+	public void cadastraAlunoEmailInvalido2Teste() throws Exception {
+		controllerTeste.cadastrarAluno("Francis", "111444555", 60, "666-999", "@andrade.com");
+	}
+
+	@Test(expected = EmailInvalidoException.class)
+	public void cadastraAlunoEmailInvalido3Teste() throws Exception {
+		controllerTeste.cadastrarAluno("Francis", "111444555", 60, "666-999", "andrade.com");
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void cadastroAlunoMatriculaExistente() throws Exception {
+		controllerTeste.cadastrarAluno("Francis", "111444555", 60, "666-999", "francis@andrade.com");
+		controllerTeste.cadastrarAluno("Francis", "111444555", 60, "666-999", "francis@andrade.com");
+	}
 
 	/**
 	 * Testa a recuperacao textual do Aluno
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -34,25 +57,35 @@ public class ControllerTeste {
 	}
 
 	/**
-	 * Testa quando nao ha alunos cadastrados ainda
-	 */
-	@Test
-	public void listarAlunosVazioTeste() {
-		assertEquals("Nao ha alunos cadastrados", controllerTeste.listarAlunos());
-	}
-
-	/**
 	 * Testa a listagem de todos os alunos cadastrados
+	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void listarAlunosTeste() throws Exception {
 		controllerTeste.cadastrarAluno("Francis", "111222333", 55, "999-999", "francis@andrade.com");
 		controllerTeste.cadastrarAluno("Andrade", "333222111", 40, "999-999", "andrade@francis.com");
-		assertEquals(
-				"333222111 - Andrade - 40 - 999-999 - andrade@francis.com" + System.lineSeparator()
-						+ "111222333 - Francis - 55 - 999-999 - francis@andrade.com" + System.lineSeparator(),
-				controllerTeste.listarAlunos());
+		assertEquals("333222111 - Andrade - 40 - 999-999 - andrade@francis.com" + ", "
+				+ "111222333 - Francis - 55 - 999-999 - francis@andrade.com", controllerTeste.listarAlunos());
+	}
+
+	/**
+	 * Testa quando nao ha alunos cadastrados ainda
+	 */
+	@Test
+	public void listarAlunosVazioTeste() {
+		assertEquals("", controllerTeste.listarAlunos());
+	}
+
+	@Test
+	public void getInfoAlunoTeste() throws Exception {
+		controllerTeste.cadastrarAluno("Francis", "111222333", 55, "999-999", "francis@andrade.com");
+		assertEquals("Francis", controllerTeste.getInfoAluno("111222333", "nome"));
+		assertEquals("111222333", controllerTeste.getInfoAluno("111222333", "matricula"));
+		assertEquals("55", controllerTeste.getInfoAluno("111222333", "codigoCurso"));
+		assertEquals("999-999", controllerTeste.getInfoAluno("111222333", "telefone"));
+		assertEquals("francis@andrade.com", controllerTeste.getInfoAluno("111222333", "email"));
+		assertEquals(null, controllerTeste.getInfoAluno("111222333", "testes"));
 	}
 
 }
