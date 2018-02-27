@@ -49,7 +49,7 @@ public class Aluno implements Comparable<Aluno> {
 	}
 	
 	/**
-	 * Irá validar o Email que sera passado como parametro pra criacao do Aluno
+	 * Ira validar o Email que sera passado como parametro pra criacao do Aluno
 	 *
 	 * @param email,
 	 *            String com o email que sera verificado
