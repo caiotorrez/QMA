@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-/controller/
-/alunos/
-/cadastroExceptions/
-/definicaoException/
-/horarios/
-/infoException/
-/tutor/
-/controllerTeste/
-=======
 /alunos/
 /alunosTeste/
 /cadastroExceptions/
@@ -15,9 +5,8 @@
 /controllerTeste/
 /definicaoException/
 /horarios/
+/horariosTeste/
 /infoException/
 /main/
 /tutor/
->>>>>>> a1d3502a313244e1e21fb7465228105872a06865
-/horariosTeste/
 /tutorTestes/

@@ -7,6 +7,7 @@
  */
 package alunos;
 
+import cadastroExceptions.EmailInvalidoException;
 import cadastroExceptions.NullOuEmBrancoException;
 
 /**
@@ -32,11 +33,37 @@ public class Aluno implements Comparable<Aluno> {
 	 * @param email, String com o email do aluno
 	 * @exception Sera lancado quando algum parametro for passado incorretamente 
 	 * @throws NullOuEmBrancoException
+	 * @version 1.0
+	 * @author Caio Torres
+	 * @version 1.1
+	 * @author Luan Carlos
 	 */
 	private void checkCadastro(String nome, String matricula, int codigoDoCurso, String telefone, String email) throws Exception {
-		if (nome == null || nome.trim().equals("")) {
+		if (nome == null || nome.trim().equals("")) 
+			throw new NullOuEmBrancoException("Erro no cadastro de aluno: Nome nao pode ser vazio ou nulo");		
+		if (matricula == null || matricula.trim().equals(""))
 			throw new NullOuEmBrancoException("Erro no cadastro de aluno: Nome nao pode ser vazio ou nulo");
-		}
+		if (email == null || email.trim().equals(""))
+			throw new NullOuEmBrancoException("Erro no cadastro de aluno: Nome nao pode ser vazio ou nulo");
+		validaEmail(email);
+	}
+	
+	/**
+	 * Irá validar o Email que sera passado como parametro pra criacao do Aluno
+	 *
+	 * @param email,
+	 *            String com o email que sera verificado
+	 * @throws EmailInvalidoException
+	 * @version 1.0
+	 * @author Caio Torres
+	 * @version 1.1
+	 * @author Luan Carlos
+	 */
+	private void validaEmail(String email) throws Exception {
+		// checa o primeiro e o ultimo char se tem '@' se nao tiver checa se tem '@' em
+		// algum lugar do email.
+		if (email.charAt(0) == '@' || email.charAt(email.length() - 1) == '@' || !email.contains("@")) 
+			throw new EmailInvalidoException("aluno");
 	}
 	
 	/**
@@ -48,6 +75,10 @@ public class Aluno implements Comparable<Aluno> {
 	 * @param email, String com o email do aluno
 	 * @exception Sera lancado quando algum parametro for passado incorretamente 
 	 * @throws NullOuEmBrancoException
+	 * @version 1.0
+	 * @author Caio Torres
+	 * @version 1.1
+	 * @author Luan Carlos
 	 */
 	public Aluno(String nome, String matricula, int codigoDoCurso, String telefone, String email) throws Exception {
 		this.checkCadastro(nome, matricula, codigoDoCurso, telefone, email);

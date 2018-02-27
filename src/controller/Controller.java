@@ -34,21 +34,6 @@ public class Controller {
 	private Map<String, Aluno> alunos = new HashMap<>();
 	private Map<String, Tutor> tutores = new HashMap<>();
 
-	/**
-	 * Irá validar o Email que sera passado como parametro pra criacao do Aluno
-	 *
-	 * @param email,
-	 *            String com o email que sera verificado
-	 * @throws EmailInvalidoException
-	 */
-	private void validaEmail(String email) throws Exception {
-		// checa o primeiro e o ultimo char se tem '@' se nao tiver checa se tem '@' em
-		// algum lugar do email.
-		if (email.charAt(0) == '@' || email.charAt(email.length() - 1) == '@' || !email.contains("@")) {
-			throw new EmailInvalidoException("aluno");
-		}
-	}
-
 	// Alunos
 
 	/**
@@ -69,7 +54,6 @@ public class Controller {
 	 */
 	public void cadastrarAluno(String nome, String matricula, int codigoCurso, String telefone, String email)
 			throws Exception {
-		this.validaEmail(email);
 		if (alunos.containsKey(matricula)) {
 			throw new NullPointerException("Erro no cadastro de aluno: Aluno de mesma matricula ja cadastrado");
 		}

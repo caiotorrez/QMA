@@ -124,4 +124,12 @@ public class Horario {
 		return true;
 	}
 
+	/**
+	 * Retorna a representacao textual de Horario
+	 * @version 1.0
+	 * @author Luan Carlos
+	 */
+	public String toString(){
+		return "Responsavel - "+this.email+" - Dia: "+this.dia+" - Hora: "+this.horario;
+	}
 }

@@ -39,8 +39,13 @@ public class Tutor implements Comparable<Tutor> {
 	 *            O aluno que vai passar a ser também um tutor.
 	 * @param disciplina,
 	 *            A disciplina que o Tutor será responsável.
+	 * @throws Exception 
 	 */
-	public Tutor(Aluno aluno, Disciplina disciplina) {
+	public Tutor(Aluno aluno, Disciplina disciplina) throws Exception {
+		if(aluno == null)
+			throw new NullPointerException("Erro na criacao do Tutor: Aluno nao pode ser nulo");
+		if(disciplina == null)
+			throw new NullPointerException("Erro na criacao do Tutor: Disciplina nao pode ser nula");
 		this.horarios = new HashMap<>();
 		this.disciplinas = new HashMap<>();
 		this.locais = new ArrayList<>();
@@ -52,13 +57,16 @@ public class Tutor implements Comparable<Tutor> {
 	 * Adiciona uma disciplina ao leque de responsabilidade do Tutor
 	 * 
 	 * @param disciplina,
-	 *            Disciplina que sera adicionada a Colecao de Disciplinas do Tutor
+	 *            Disciplina que sera adicionada a Colecao de Disciplinas do
+	 *            Tutor
+	 * @throws Exception 
 	 * @exception Sera
 	 *                lancada quando a nova disciplina ja estiver na colecao de
 	 *                Disciplinas do Tutor
-	 * @throws DefinicaoException
 	 */
-	public void addDisciplina(Disciplina disciplina) throws DefinicaoException {
+	public void addDisciplina(Disciplina disciplina) throws Exception {
+		if(disciplina == null)
+			throw new NullPointerException("Erro na adicao de disciplinas ao Tuto: Disciplina nao pode ser nula");
 		if (this.disciplinas.containsKey(disciplina.getID())) {
 			throw new DefinicaoException("papel", "Ja eh tutor dessa disciplina");
 		} else {
@@ -88,8 +96,8 @@ public class Tutor implements Comparable<Tutor> {
 	 * @param local,
 	 *            String com o local para o Atendimento
 	 * @exception Sera
-	 *                lancada quando o nome do local for invalido ou o local estiver
-	 *                indisponivel
+	 *                lancada quando o nome do local for invalido ou o local
+	 *                estiver indisponivel
 	 * @throws NullOuEmBrancoException
 	 */
 	private void checkCadastroLocal(String email, String local) throws NullOuEmBrancoException {
@@ -148,7 +156,8 @@ public class Tutor implements Comparable<Tutor> {
 	}
 
 	/**
-	 * Verifica se o Email do tutor esta cadastrado na colecao de alunos cadastrados
+	 * Verifica se o Email do tutor esta cadastrado na colecao de alunos
+	 * cadastrados
 	 * 
 	 * @param email,
 	 *            String com o email do tutor pesquisado

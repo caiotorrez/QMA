@@ -17,7 +17,7 @@ import cadastroExceptions.NullOuEmBrancoException;
  * Classe de Testes, referentes a Aluno
  * 
  * @author
- * @version 1.0
+ * @version 1.1
  */
 public class AlunoTeste {
 	private Aluno alunoTeste;
@@ -26,6 +26,8 @@ public class AlunoTeste {
 	 * Testa a criação de um Aluno com o nome nulo.
 	 * 
 	 * @throws Exception
+	 * @version 1.0
+	 * @author 
 	 */
 	@Test(expected = NullOuEmBrancoException.class)
 	public void nomeNuloTeste() throws Exception {
@@ -36,6 +38,8 @@ public class AlunoTeste {
 	 * Testa a criação de um Aluno com o nome vazio.
 	 * 
 	 * @throws Exception
+	 * @version 1.0
+	 * @author 
 	 */
 	@Test(expected = NullOuEmBrancoException.class)
 	public void nomeVazioTeste() throws Exception {
@@ -43,9 +47,57 @@ public class AlunoTeste {
 	}
 
 	/**
+	 * Testa a criação de um Aluno com o matricua nulo.
+	 * 
+	 * @throws Exception
+	 * @version 1.1
+	 * @author Luan Carlos
+	 */
+	@Test(expected = NullOuEmBrancoException.class)
+	public void matriculaNuloTeste() throws Exception {
+		alunoTeste = new Aluno("Ricardo", null, 50, "000-000", "francis@andrade.com");
+	}
+
+	/**
+	 * Testa a criação de um Aluno com o matricula vazio.
+	 * 
+	 * @throws Exception
+	 * @version 1.1
+	 * @author Luan Carlos
+	 */
+	@Test(expected = NullOuEmBrancoException.class)
+	public void matriculaVazioTeste() throws Exception {
+		alunoTeste = new Aluno("Ricardo", " ", 50, "000-000", "francis@andrade.com");
+	}
+	/**
+	 * Testa a criação de um Aluno com o email nulo.
+	 * 
+	 * @throws Exception
+	 * @version 1.1
+	 * @author Luan Carlos
+	 */
+	@Test(expected = NullOuEmBrancoException.class)
+	public void emailNuloTeste() throws Exception {
+		alunoTeste = new Aluno("Breno", "112233", 50, "000-000", null);
+	}
+
+	/**
+	 * Testa a criação de um Aluno com o email vazio.
+	 * 
+	 * @throws Exception
+	 * @version 1.1
+	 * @author Luan Carlos
+	 */
+	@Test(expected = NullOuEmBrancoException.class)
+	public void emailVazioTeste() throws Exception {
+		alunoTeste = new Aluno("Breno", "112233", 50, "000-000", " ");
+	}
+	/**
 	 * Testa a Criacao do aluno com um telefone.
 	 * 
 	 * @throws Exception
+	 * @version 1.0
+	 * @author 
 	 */
 	@Test
 	public void toStringComTelefoneTest() throws Exception {
