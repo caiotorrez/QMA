@@ -23,7 +23,7 @@ public class AlunoTeste {
 	private Aluno alunoTeste;
 
 	/**
-	 * Testa a criação de um Aluno com o nome nulo.
+	 * Testa a criacao de um Aluno com o nome nulo.
 	 * 
 	 * @throws Exception
 	 * @version 1.0
@@ -35,7 +35,7 @@ public class AlunoTeste {
 	}
 
 	/**
-	 * Testa a criação de um Aluno com o nome vazio.
+	 * Testa a criacao de um Aluno com o nome vazio.
 	 * 
 	 * @throws Exception
 	 * @version 1.0
@@ -47,7 +47,7 @@ public class AlunoTeste {
 	}
 
 	/**
-	 * Testa a criação de um Aluno com o matricua nulo.
+	 * Testa a criacao de um Aluno com o matricua nulo.
 	 * 
 	 * @throws Exception
 	 * @version 1.1
@@ -59,7 +59,7 @@ public class AlunoTeste {
 	}
 
 	/**
-	 * Testa a criação de um Aluno com o matricula vazio.
+	 * Testa a criacao de um Aluno com o matricula vazio.
 	 * 
 	 * @throws Exception
 	 * @version 1.1
@@ -70,7 +70,7 @@ public class AlunoTeste {
 		alunoTeste = new Aluno("Ricardo", " ", 50, "000-000", "francis@andrade.com");
 	}
 	/**
-	 * Testa a criação de um Aluno com o email nulo.
+	 * Testa a criacao de um Aluno com o email nulo.
 	 * 
 	 * @throws Exception
 	 * @version 1.1
@@ -82,7 +82,7 @@ public class AlunoTeste {
 	}
 
 	/**
-	 * Testa a criação de um Aluno com o email vazio.
+	 * Testa a criacao de um Aluno com o email vazio.
 	 * 
 	 * @throws Exception
 	 * @version 1.1
