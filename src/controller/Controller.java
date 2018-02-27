@@ -35,7 +35,7 @@ public class Controller {
 	private Map<String, Tutor> tutores = new HashMap<>();
 
 	/**
-	 * Ira validar o Email que sera passado como parametro pra criacao do Aluno
+	 * Irá validar o Email que sera passado como parametro pra criacao do Aluno
 	 *
 	 * @param email,
 	 *            String com o email que sera verificado
