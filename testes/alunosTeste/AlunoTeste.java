@@ -10,7 +10,7 @@ package alunosTeste;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import alunos.Aluno;
+import aluno.Aluno;
 import cadastroExceptions.NullOuEmBrancoException;
 
 /**

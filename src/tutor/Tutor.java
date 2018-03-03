@@ -7,15 +7,8 @@
  */
 package tutor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import alunos.Aluno;
-import cadastroExceptions.NullOuEmBrancoException;
-import definicaoException.DefinicaoException;
-import horarios.Horario;
 
 /**
  * Classe Tutor
@@ -24,156 +17,72 @@ import horarios.Horario;
  * @version 1.0
  */
 public class Tutor implements Comparable<Tutor> {
-	private int notaAvaliacao;
-	private int qtAvaliacoes;
-	private double carteira;
-	private Map<String, Horario> horarios;
+	
 	private Map<String, Disciplina> disciplinas;
-	private List<String> locais;
-	private Aluno aluno;
+	private String matricula;
+	private String email;
+	private double avaliacao;
+	private int id;
 
-	/**
-	 * Construtor do Tutor
-	 * 
-	 * @param aluno,
-	 *            O aluno que vai passar a ser também um tutor.
-	 * @param disciplina,
-	 *            A disciplina que o Tutor será responsável.
-	 * @throws Exception 
-	 */
-	public Tutor(Aluno aluno, Disciplina disciplina) throws Exception {
-		if(aluno == null)
-			throw new NullPointerException("Erro na criacao do Tutor: Aluno nao pode ser nulo");
+	public Tutor(String matricula, String email, Disciplina disciplina, int id) {
 		if(disciplina == null)
-			throw new NullPointerException("Erro na criacao do Tutor: Disciplina nao pode ser nula");
-		this.horarios = new HashMap<>();
+			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Disciplina nao pode ser nula"));
+		
 		this.disciplinas = new HashMap<>();
-		this.locais = new ArrayList<>();
-		this.aluno = aluno;
+		this.matricula = matricula;
+		this.email = email;
 		this.disciplinas.put(disciplina.getID(), disciplina);
+		this.avaliacao = 4;
+		this.id = id;
 	}
 
-	/**
-	 * Adiciona uma disciplina ao leque de responsabilidade do Tutor
-	 * 
-	 * @param disciplina,
-	 *            Disciplina que sera adicionada a Colecao de Disciplinas do
-	 *            Tutor
-	 * @throws Exception 
-	 * @exception Sera
-	 *                lancada quando a nova disciplina ja estiver na colecao de
-	 *                Disciplinas do Tutor
-	 */
-	public void addDisciplina(Disciplina disciplina) throws Exception {
+
+	public void addDisciplina(Disciplina disciplina) {
 		if(disciplina == null)
-			throw new NullPointerException("Erro na adicao de disciplinas ao Tuto: Disciplina nao pode ser nula");
-		if (this.disciplinas.containsKey(disciplina.getID())) {
-			throw new DefinicaoException("papel", "Ja eh tutor dessa disciplina");
+			throw new TutorException(new NullPointerException("Erro na adicao de disciplinas ao Tuto: Disciplina nao pode ser nula"));
+		else if (this.disciplinas.containsKey(disciplina.getID())) {
+			throw new TutorException("Erro na definicao de papel: Ja eh tutor dessa disciplina");
 		} else {
 			this.disciplinas.put(disciplina.getID(), disciplina);
 		}
 	}
-
-	/**
-	 * Retorna a reprensacao textutal da colecao de Disciplinas do Tutor
-	 * 
-	 * @return String
-	 */
-	public String exibeDisciplina() {
+	
+	public String exibeDisciplinas() {
 		String saida = "";
 		for (String matricula : this.disciplinas.keySet()) {
 			saida += this.disciplinas.get(matricula).toString() + System.lineSeparator();
-
 		}
 		return saida;
 	}
-
-	/**
-	 * Verifica se o Local para atendimento e valido e esta disponivel
-	 * 
-	 * @param email,
-	 *            String com o email do tutor responsavel
-	 * @param local,
-	 *            String com o local para o Atendimento
-	 * @exception Sera
-	 *                lancada quando o nome do local for invalido ou o local
-	 *                estiver indisponivel
-	 * @throws NullOuEmBrancoException
-	 */
-	private void checkCadastroLocal(String email, String local) throws NullOuEmBrancoException {
-		if (email == null || email.trim().equals("")) {
-			throw new NullOuEmBrancoException(
-					"Erro no cadastrar local de atendimento: email nao pode ser vazio ou em branco");
-		} else if (local == null || local.trim().equals("")) {
-			throw new NullOuEmBrancoException(
-					"Erro no cadastrar local de atendimento: local nao pode ser vazio ou em branco");
-		}
+	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public String getMatricula() {
+		return this.matricula;
+	}
+	
+	public void setAvaliacao(double avaliacao) {
+		this.avaliacao = (this.avaliacao + avaliacao) / 2;
+	}
+	
+	public double getAvaliacao() {
+		return this.avaliacao;
 	}
 
-	/**
-	 * Adiciona um local de atendimento a colecao referente aos locais do Tutor
-	 * 
-	 * @param email,
-	 *            String com o email do tutor responsavel
-	 * @param local,
-	 *            String com o nome do local
-	 */
-	public void addLocal(String email, String local) {
-		this.checkCadastroLocal(email, local);
-		this.locais.add(local);
-	}
-
-	/**
-	 * Adiciona um horario de atendimento a colecao de atendimentos do Tutor
-	 * 
-	 * @param horario,
-	 *            Horario para atendimento
-	 */
-	public void addHorario(Horario horario) {
-		this.horarios.put(horario.getDia(), horario);
-	}
-
-	/**
-	 * Verifica se o local esta cadastrado a colecao de locais do Tutor
-	 * 
-	 * @param local,
-	 *            String com o nome do local pesquisado
-	 * @return boolean
-	 */
-	public boolean contemLocal(String local) {
-		return this.locais.contains(local);
-	}
-
-	/**
-	 * Verifica se o horario esta cadastrado a colecao de horarios do Tutor
-	 * 
-	 * @param horario,
-	 *            Horario que esta sendo pesquisado
-	 * @return boolean
-	 */
-	public boolean contemHorario(Horario horario) {
-		return this.horarios.containsValue(horario);
-	}
-
-	/**
-	 * Verifica se o Email do tutor esta cadastrado na colecao de alunos
-	 * cadastrados
-	 * 
-	 * @param email,
-	 *            String com o email do tutor pesquisado
-	 * @return boolean
-	 */
-	public boolean contemEmail(String email) {
-		return this.aluno.getEmail().equals(email);
+	public int getId() {
+		return this.id;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
+		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -184,30 +93,32 @@ public class Tutor implements Comparable<Tutor> {
 		if (getClass() != obj.getClass())
 			return false;
 		Tutor other = (Tutor) obj;
-		if (aluno == null) {
-			if (other.aluno != null)
+		if (matricula == null) {
+			if (other.matricula != null)
 				return false;
-		} else if (!aluno.equals(other.aluno))
+		} else if (!matricula.equals(other.matricula))
 			return false;
 		return true;
 	}
-
-	/**
-	 * Representacao Textual do Tutor
-	 * 
-	 * @return String
-	 */
+	
+	@Override
 	public String toString() {
-		return aluno.toString();
+		return this.matricula + " - " + this.email;
 	}
 
-	/**
-	 * Forma de comparacao entre tutores
-	 * 
-	 * @return Inteiro
-	 */
+
 	@Override
 	public int compareTo(Tutor outroTutor) {
-		return this.aluno.compareTo(outroTutor.aluno);
+		if (this.avaliacao > outroTutor.getAvaliacao()) {
+			return -1;
+		} else if (this.avaliacao > outroTutor.avaliacao) {
+			return 1;
+		}
+		if (this.id < outroTutor.id) {
+			return -1;
+		} else if (this.id > outroTutor.id) {
+			return 1;
+		}
+		return 0;
 	}
 }

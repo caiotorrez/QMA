@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import alunos.Aluno;
+import aluno.Aluno;
 import cadastroExceptions.NullOuEmBrancoException;
 import definicaoException.DefinicaoException;
 import horarios.Horario;

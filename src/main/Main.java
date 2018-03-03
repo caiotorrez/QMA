@@ -21,9 +21,10 @@ public class Main {
 	 * @param args, String com o que o main ira rodar
 	 */
 	public static void main(String[] args) {
-		args = new String[] { "controller.Controller", "testesAceitacao/us1_test.txt",
-				"testesAceitacao/us2_test.txt", "testesAceitacao/us3_test.txt" };
+		args = new String[] { "classePrincipal.Facade", "testesAceitacao/us1_test.txt", "testesAceitacao/us2_test.txt", "testesAceitacao/us3_test.txt"
+				, "testesAceitacao/us4_test.txt"};
 		EasyAccept.main(args);
+		
 	}
 
 }

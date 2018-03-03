@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import cadastroExceptions.EmailInvalidoException;
-import controller.Controller;
+import controladoresIO.Controller;
 
 /**
  * Classe de testes referente ao Controller do Sistema

@@ -7,58 +7,39 @@
  */
 package tutor;
 
-import definicaoException.NumeroForaDosLimitesException;
-
-/**
- * Classe Disciplina
- * @author Caio Torres
- * @version 1.0
- */
 public class Disciplina {
 
-	private String nomeDisciplina;
+	private String disciplina;
 	private int proficiencia;
 
-	/**
-	 * Construtor de Disciplina
-	 * @param nomeDisciplina, String com o nome da Disciplina
-	 * @param proficiencia, Inteiro com o valor da Habilidade do tutor responsavel pela Disciplina
-	 * @exception Sera lancada quando algum parametro invalido for passado para o mesmo
-	 * @throws NullPointerException
-	 * @throws NumeroForaDosLimitesException
-	 */
-	public Disciplina(String nomeDisciplina, int proficiencia)throws Exception {
+	
+	public Disciplina(String nomeDisciplina, int proficiencia) {
 		if (nomeDisciplina == null || nomeDisciplina.trim().equals("")) {
 			throw new NullPointerException();
 		}
 		else if (proficiencia < 1 || proficiencia > 5) {
-			throw new NumeroForaDosLimitesException("Proficiencia invalida");
+			throw new TutorException(new NumeroForaDosLimitesException("eh"));
 		}
-		this.nomeDisciplina = nomeDisciplina;
+		this.disciplina = nomeDisciplina;
 		this.proficiencia = proficiencia;
 	}
 
-	/**
-	 * Retorna o nome da Disciplina
-	 * @return String
-	 */
+	
 	public String getID() {
-		return nomeDisciplina;
+		return this.disciplina;
 	}
 
-	/**
-	 * Retorna o valor da Proficiencia
-	 * @return
-	 */
+	
 	public int getProficiencia() {
-		return proficiencia;
+		return this.proficiencia;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nomeDisciplina == null) ? 0 : nomeDisciplina.hashCode());
+		result = prime * result + ((disciplina == null) ? 0 : disciplina.hashCode());
 		return result;
 	}
 
@@ -71,21 +52,18 @@ public class Disciplina {
 		if (getClass() != obj.getClass())
 			return false;
 		Disciplina other = (Disciplina) obj;
-		if (nomeDisciplina == null) {
-			if (other.nomeDisciplina != null)
+		if (disciplina == null) {
+			if (other.disciplina != null)
 				return false;
-		} else if (!nomeDisciplina.equals(other.nomeDisciplina))
+		} else if (!disciplina.equals(other.disciplina))
 			return false;
 		return true;
 	}
 
-	/**
-	 * Representacao Textual da Disciplina
-	 * @return String
-	 */
+
 	@Override
 	public String toString() {
-		return this.nomeDisciplina + " - " + this.proficiencia;
+		return this.disciplina + " - " + this.proficiencia;
 	}
 
 }
