@@ -84,4 +84,18 @@ public class ServiceAjuda {
 			throw new NullPointerException("Erro ao tentar recuperar info da ajuda : atributo nao encontrado");
 		}
 	}
+	
+	public String concluirAjuda(int id) {
+		if (id > this.ajudas.size()) {
+			throw new NullPointerException("Erro na avaliacao de tutor: id nao encontrado ");
+		}
+		else if (this.ajudas.get(id - 1).getConclusaoAjuda()) {
+			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda ja avaliada");
+		} 
+		else {
+			this.ajudas.get(id - 1).concluirAjuda();
+			return this.ajudas.get(id).getMatriculaTutor();
+		}
+		
+	}
 }

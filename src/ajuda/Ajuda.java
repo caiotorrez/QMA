@@ -6,11 +6,20 @@ public abstract class Ajuda {
 	private String disciplina;
 	private String matriculaAluno;
 	private String matriculaTutor;
+	private boolean concluida;
 	
 	
 	public Ajuda(String matrAluno, String disciplina) {
-		this.matriculaAluno = matrAluno;
-		this.disciplina = disciplina;
+		if (matrAluno == null || matrAluno.trim().equals("")) {
+			throw new AjudaException(new NullPointerException("Matricula do Aluno nao pode ser null ou em branco."));
+		}
+		else if (disciplina == null || disciplina.trim().equals("")) {
+			throw new AjudaException(new NullPointerException("Disciplina nao pode ser null ou em branco."));
+		} else {
+			this.matriculaAluno = matrAluno;
+			this.disciplina = disciplina;
+			this.concluida = false;
+		}
 	}
 	
 	public void setMatriculaTutor(String matriculaTutor) {
@@ -19,7 +28,6 @@ public abstract class Ajuda {
 
 	public String getMatriculaTutor() {
 		return this.matriculaTutor;
-		
 	}
 	
 	public String getDisciplina() {
@@ -28,6 +36,14 @@ public abstract class Ajuda {
 	
 	public String getMatriculaAluno() {
 		return this.matriculaAluno;
+	}
+	
+	public void concluirAjuda() {
+		this.concluida = true;
+	}
+	
+	public boolean getConclusaoAjuda() {
+		return this.concluida;
 	}
 	
 	@Override

@@ -15,10 +15,10 @@ public class Disciplina {
 	
 	public Disciplina(String nomeDisciplina, int proficiencia) {
 		if (nomeDisciplina == null || nomeDisciplina.trim().equals("")) {
-			throw new NullPointerException();
+			throw new TutorException(new NullPointerException("Nome da disciplina nao pode ser null ou em branco."));
 		}
-		else if (proficiencia < 1 || proficiencia > 5) {
-			throw new TutorException(new NumeroForaDosLimitesException("eh"));
+		else if (proficiencia < 0 || proficiencia > 5) {
+			throw new TutorException(new NumberFormatException("Proficiencia invalida, nao pode ser negativo nem acima de 5"));
 		}
 		this.disciplina = nomeDisciplina;
 		this.proficiencia = proficiencia;

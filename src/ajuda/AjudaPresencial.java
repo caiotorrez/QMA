@@ -8,9 +8,19 @@ public class AjudaPresencial extends Ajuda {
 	
 	public AjudaPresencial(String matrAluno, String disciplina, String horario, String dia, String localInteresse) {
 		super(matrAluno, disciplina);
-		this.localInteresse = localInteresse;
-		this.horario = horario;
-		this.dia = dia;
+		if (localInteresse == null || localInteresse.trim().equals("")) {
+			throw new AjudaException(new NullPointerException("Local de interesse nao pode ser null ou em branco."));
+		}
+		else if (horario == null || horario.trim().equals("")) {
+			throw new AjudaException(new NullPointerException("Horario nao pode ser null ou em branco."));
+		}
+		else if (dia == null || dia.trim().equals("")) {
+			throw new AjudaException(new NullPointerException("Dia nao pode ser null ou em branco."));
+		} else {
+			this.localInteresse = localInteresse;
+			this.horario = horario;
+			this.dia = dia;
+		}
 	}
 	
 	public String getHorario() {

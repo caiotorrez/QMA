@@ -57,7 +57,4 @@ public class ServiceHorarioLocais {
 			return this.locaisAtendimento.get(email).contemLocal(local);
 		} return false;
 	}
-
-	
-	
 }

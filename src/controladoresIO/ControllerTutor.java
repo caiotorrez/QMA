@@ -33,5 +33,20 @@ public class ControllerTutor {
 	public String listarTutores() {
 		return this.serviceTutor.getAllTutores();
 	}
+	
+	public void avaliarTutor(int idAjuda, double nota) {
+		if (idAjuda < 0) {
+			throw new NullPointerException();
+		}
+		else if (nota < 0) {
+			throw new NullPointerException("Erro na avaliacao de tutor: nota nao pode ser menor que 0");
+		} 
+		else if (nota > 5) {
+			throw new NullPointerException("Erro na avaliacao de tutor: nota nao pode ser maior que 5");
+		} 
+		else {
+			this.serviceTutor.avaliarTutor(idAjuda, nota);
+		}
+	}
 
 }

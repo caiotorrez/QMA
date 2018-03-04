@@ -12,21 +12,24 @@ public class Aluno implements Comparable<Aluno> {
 	private String email;
 	
 	
-	private void checkCadastro(String nome, String matricula, String email) {
+	private void checkCadastro(String nome, String matricula, String email, int condigoDoCurso) {
 		if (nome == null || nome.trim().equals("")) {
-			throw new NomeNullOuEmBrancoException();
+			throw new AlunoException(new NullPointerException("Nome nao pode ser null ou em branco."));
 		}
 		else if (matricula == null || matricula.trim().equals("")) {
-			throw new MatriculaNullOuEmBrancoException();
+			throw new AlunoException(new NullPointerException("Matricula nao pode ser null ou em branco."));
 		}
 		else if (email == null || email.trim().equals("")) {
-			throw new EmailNullOuEmBrancoException();
+			throw new AlunoException(new NullPointerException("Email nao pode ser null ou em branco."));
+		}
+		else if (codigoCurso < 0) {
+			throw new AlunoException(new NumberFormatException("Codigo do curso nao pode ser negativo"));
 		}
 	}
 	
 	
 	public Aluno(String nome, String matricula, int codigoDoCurso, String telefone, String email) {
-		this.checkCadastro(nome, matricula, email);
+		this.checkCadastro(nome, matricula, email, codigoDoCurso);
 		this.nome = nome;
 		this.matricula = matricula;
 		this.codigoCurso = codigoDoCurso;
@@ -82,13 +85,11 @@ public class Aluno implements Comparable<Aluno> {
 			return false;
 		return true;
 	}
-	
 
 	@Override
 	public int compareTo(Aluno outroAluno) {
 		return this.nome.compareTo(outroAluno.nome);
 	}
-	
 
 	@Override
 	public String toString() {

@@ -12,7 +12,7 @@ import servicos.ServiceTutor;
 public class Facade {
 	
 	private ServiceAluno serviceAluno = new ServiceAluno();
-	private ServiceTutor serviceTutor = new ServiceTutor(this.serviceAluno);
+	private ServiceTutor serviceTutor = new ServiceTutor(this.serviceAluno, this.serviceAjuda);
 	private ServiceHorarioLocais serviceHL = new ServiceHorarioLocais(this.serviceTutor);
 	private ServiceAjuda serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
 	private ControllerAluno alunoController = new ControllerAluno(this.serviceAluno);

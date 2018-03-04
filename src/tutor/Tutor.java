@@ -25,8 +25,15 @@ public class Tutor implements Comparable<Tutor> {
 	private int id;
 
 	public Tutor(String matricula, String email, Disciplina disciplina, int id) {
-		if(disciplina == null)
+		if(disciplina == null) {
 			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Disciplina nao pode ser nula"));
+		}
+		else if (matricula == null || matricula.trim().equals("")) {
+			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Matricula nao pode ser nulo ou em branco"));
+		}
+		else if (email == null || email.trim().equals("")) {
+			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Email nao pode ser nulo ou em branco"));
+		}
 		
 		this.disciplinas = new HashMap<>();
 		this.matricula = matricula;
@@ -63,8 +70,8 @@ public class Tutor implements Comparable<Tutor> {
 		return this.matricula;
 	}
 	
-	public void setAvaliacao(double avaliacao) {
-		this.avaliacao = (this.avaliacao + avaliacao) / 2;
+	public void addAvaliacao(double avaliacao) {
+		this.avaliacao = (this.avaliacao * 5 + avaliacao) / 6;
 	}
 	
 	public double getAvaliacao() {
@@ -73,6 +80,16 @@ public class Tutor implements Comparable<Tutor> {
 
 	public int getId() {
 		return this.id;
+	}
+	
+	public String getNivel() {
+		if (this.avaliacao > 4.5) {
+			return "TOP";
+		} else if (this.avaliacao > 3) {
+			return "Tutor";
+		} else {
+			return "Aprendiz";
+		}
 	}
 
 	@Override
@@ -100,12 +117,6 @@ public class Tutor implements Comparable<Tutor> {
 			return false;
 		return true;
 	}
-	
-	@Override
-	public String toString() {
-		return this.matricula + " - " + this.email;
-	}
-
 
 	@Override
 	public int compareTo(Tutor outroTutor) {
@@ -120,5 +131,10 @@ public class Tutor implements Comparable<Tutor> {
 			return 1;
 		}
 		return 0;
+	}
+	
+	@Override
+	public String toString() {
+		return this.matricula + " - " + this.email;
 	}
 }

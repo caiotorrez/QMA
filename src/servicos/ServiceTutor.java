@@ -13,10 +13,12 @@ import tutor.Tutor;
 public class ServiceTutor {
 	
 	private ServiceAluno serviceAluno;
+	private ServiceAjuda serviceAjuda;
 	private Map<String, Tutor> tutores;
 	
 	
-	public ServiceTutor(ServiceAluno serviceAluno) {
+	public ServiceTutor(ServiceAluno serviceAluno, ServiceAjuda serviceAjuda) {
+		this.serviceAjuda = serviceAjuda;
 		this.serviceAluno = serviceAluno;
 		this.tutores = new HashMap<>();
 	}
@@ -31,8 +33,7 @@ public class ServiceTutor {
 			this.tutores.put(matricula, new Tutor(matricula, this.serviceAluno.getInfoAluno(matricula, "Email"), new Disciplina(disciplina, proficiencia),this.tutores.size()));
 		}
 	}
-	
-	
+
 	public String getTutor(String matricula) {
 		if (this.tutores.containsKey(matricula)) {
 			return this.serviceAluno.toStringAluno(matricula);
@@ -77,5 +78,16 @@ public class ServiceTutor {
 		Collections.sort(tutores);
 		return tutores.get(0).getMatricula();
 	}
+
+	public void avaliarTutor(int idAjuda, double nota) {
+		String matricula = this.serviceAjuda.concluirAjuda(idAjuda);
+		if (matricula == null) {
+			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
+		} else {
+			this.tutores.get(matricula).addAvaliacao(nota);			
+		}
+	}
+
+
 
 }
