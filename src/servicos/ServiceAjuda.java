@@ -86,8 +86,8 @@ public class ServiceAjuda {
 	}
 	
 	public void concluirAjuda(int id, int nota) {
-		if (this.ajudas.size() == 12) {
-			System.out.println(this.ajudas.get(11));
+		if (this.ajudas.size() == 12) {	
+			this.ajudas.get(11);
 		}
 		if (nota < 0) {
 			throw new NumberFormatException("Erro na avaliacao de tutor: nota nao pode ser menor que 0");

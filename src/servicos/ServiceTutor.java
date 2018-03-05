@@ -15,8 +15,7 @@ public class ServiceTutor {
 	
 	
 	private ServiceAluno serviceAluno;
-	private Map<String, Tutor> tutores;
-	
+	private Map<String, Tutor> tutores;	
 	
 	public ServiceTutor(ServiceAluno serviceAluno) {
 		this.serviceAluno = serviceAluno;
@@ -77,7 +76,6 @@ public class ServiceTutor {
 	}
 
 	public void avaliarTutor(int nota, String matricula) {
-		System.out.println(matricula);
 		if (matricula == null) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		} else {
