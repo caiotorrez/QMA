@@ -19,6 +19,7 @@ public abstract class Ajuda {
 			this.matriculaAluno = matrAluno;
 			this.disciplina = disciplina;
 			this.concluida = false;
+			this.matriculaTutor = "666";
 		}
 	}
 	
@@ -48,6 +49,6 @@ public abstract class Ajuda {
 	
 	@Override
 	public String toString() {
-		return "Tutor - " + this.matriculaTutor +", disciplina- " + this.disciplina;
+		return "Tutor - " + this.matriculaTutor +", disciplina - " + this.disciplina;
 	}
 }

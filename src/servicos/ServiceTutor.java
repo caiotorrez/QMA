@@ -77,6 +77,7 @@ public class ServiceTutor {
 	}
 
 	public void avaliarTutor(int nota, String matricula) {
+		System.out.println(matricula);
 		if (matricula == null) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		} else {

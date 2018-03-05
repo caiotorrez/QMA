@@ -86,6 +86,9 @@ public class ServiceAjuda {
 	}
 	
 	public void concluirAjuda(int id, int nota) {
+		if (this.ajudas.size() == 12) {
+			System.out.println(this.ajudas.get(11));
+		}
 		if (nota < 0) {
 			throw new NumberFormatException("Erro na avaliacao de tutor: nota nao pode ser menor que 0");
 		}
@@ -95,7 +98,7 @@ public class ServiceAjuda {
 		else if (id > this.ajudas.size()) {
 			throw new NullPointerException("Erro na avaliacao de tutor: id nao encontrado ");
 		}
-		else if (this.ajudas.get(id - 1).getMatriculaTutor() == null) {
+		else if (this.ajudas.get(id - 1).getMatriculaTutor().equals("666")) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		}
 		else if (this.ajudas.get(id - 1).getConclusaoAjuda()) {
