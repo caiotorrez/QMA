@@ -92,32 +92,31 @@ public class ServiceTutor {
 	}
 
 	public void doar(String matriculaTutor, int totalCentavos) {
-		if (totalCentavos <= 0) {
+		if (totalCentavos <= 0) 
 			throw new NullPointerException("Erro na doacao para tutor: totalCentavos nao pode ser menor que zero");
-		} else if (tutores.containsKey(matriculaTutor)) {
-			Tutor tutorProcurado = this.tutores.get(matriculaTutor);
-			double taxa =  tutorProcurado.getAvaliacao();
+		if (getTutor(matriculaTutor) != null) {
+			double taxa = this.tutores.get(matriculaTutor).getAvaliacao();
 			int total_tutor = 0;
 			int total_sistema = 0;
-			if (tutorProcurado.getNivel().equalsIgnoreCase("TOP")) {
+			if (this.tutores.get(matriculaTutor).getNivel().equalsIgnoreCase("TOP")) {
 				taxa = (taxa - 4.5) + 9;
 				total_sistema = (int) (((10 - taxa)/10) * totalCentavos);
-			} else if (tutorProcurado.getNivel().equalsIgnoreCase("Tutor")) {
+			} else if (this.tutores.get(matriculaTutor).getNivel().equalsIgnoreCase("Tutor")) {
 				total_sistema = 2 * totalCentavos * 10;
-			} else if (tutorProcurado.getNivel().equalsIgnoreCase("Aprendiz")) {
+			} else if (this.tutores.get(matriculaTutor).getNivel().equalsIgnoreCase("Aprendiz")) {
 				taxa = (3.0 - taxa) + 6;
 				total_sistema = (int) ((40 - taxa)/10 * totalCentavos);
 			}
-			tutorProcurado.setCarteira(total_tutor);
+			this.tutores.get(matriculaTutor).setCarteira(total_tutor);
 			serviceCaixa.adicionaValorAoCaixa(total_sistema);
 		} else
 			throw new NullPointerException("Erro na doacao para tutor: Tutor nao encontrado");
 	}
 
 	public int totalDinheiroTutor(String emailTutor) {
-		if(tutores.containsKey(emailTutor))
-			return this.tutores.get(emailTutor).getCarteira();
-		else
+		if(getTutor(emailTutor) == null)
 			throw new NullPointerException("Erro na consulta de total de dinheiro do tutor: Tutor nao encontrado");
+		else
+			return this.tutores.get(emailTutor).getCarteira();			
 	}
 }
