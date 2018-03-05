@@ -1,6 +1,12 @@
-/controladoresIO/
-/servicos/
-/tutor/
-/classePrincipal/
-/main/
 /ajuda/
+/aluno/
+/alunosTeste/
+/classePrincipal/
+/controladoresIO/
+/controllerTeste/
+/horariosTeste/
+/main/
+/servicos/
+/tempo/
+/tutor/
+/tutorTestes/

@@ -13,9 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import aluno.Aluno;
-import cadastroExceptions.NullOuEmBrancoException;
-import definicaoException.DefinicaoException;
-import horarios.Horario;
+import tutor.TutorException;
+import tempo.Horario;
 import tutor.Disciplina;
 import tutor.Tutor;
 
@@ -24,18 +23,22 @@ import tutor.Tutor;
  * 
  * @version 1.1
  * @author
- *
+ * @version 1.3
+ * @author Luan Carlos
  */
 public class TutorTest {
 	private Tutor tutorTeste;
+	@SuppressWarnings("unused")
 	private Aluno alunoTeste;
 	private Disciplina disciplinaTeste;
 	private Disciplina disciplinaTeste2;
+	@SuppressWarnings("unused")
 	private Horario horarioTeste;
 
 	/**
 	 * Inicializa objetos testes
-	 * @author 
+	 * 
+	 * @author
 	 * @version 1.0
 	 * @throws Exception
 	 * 
@@ -43,38 +46,77 @@ public class TutorTest {
 	@Before
 	public void setUp() throws Exception {
 		alunoTeste = new Aluno("Francis", "111222333", 55, "999-999", "francis@andrade.com");
-		disciplinaTeste = new Disciplina("Programação 2", 4);
+		disciplinaTeste = new Disciplina("Programacao 2", 4);
 		disciplinaTeste2 = new Disciplina("Lab. de Prog. 2", 3);
-		tutorTeste = new Tutor(alunoTeste, disciplinaTeste);
-		horarioTeste = new Horario("francis@andrade.com", "16:00", "segunda");
+		tutorTeste = new Tutor("111222333", "francis@andrade.com", disciplinaTeste, 1);
+		horarioTeste = new Horario("16:00", "segunda");
 	}
 
 	/**
 	 * Testa a criacao de um Tutor com o Aluno nulo
+	 * 
 	 * @author Luan Carlos
 	 * @version 1.1
 	 * @throws NullPointerException
 	 */
-	@Test(expected = NullPointerException.class)
-	public void criaTutorAlunoNuloTeste() throws Exception {
-		tutorTeste = new Tutor(null, disciplinaTeste);
+	@Test(expected = TutorException.class)
+	public void criaTutorMatriculaNuloTeste() throws Exception {
+		tutorTeste = new Tutor(null, "francis@andrade.com", disciplinaTeste, 1);
+	}
+
+	/**
+	 * Testa a criacao de um Tutor com o Aluno nulo
+	 * 
+	 * @author Luan Carlos
+	 * @version 1.1
+	 * @throws NullPointerException
+	 */
+	@Test(expected = TutorException.class)
+	public void criaTutorMatriculaVaziaTeste() throws Exception {
+		tutorTeste = new Tutor("    ", "francis@andrade.com", disciplinaTeste, 1);
 	}
 
 	/**
 	 * Testa a criacao de um Tutor com a Disciplina Nula
+	 * 
 	 * @author Luan Carlos
 	 * @version 1.1
 	 * @throws Exception
 	 */
-	@Test(expected = NullPointerException.class)
+	@Test(expected = TutorException.class)
+	public void criaTutorEmailNuloTeste() throws Exception {
+		tutorTeste = new Tutor("111222333", null, disciplinaTeste, 1);
+	}
+
+	/**
+	 * Testa a criacao de um Tutor com a Disciplina Nula
+	 * 
+	 * @author Luan Carlos
+	 * @version 1.1
+	 * @throws Exception
+	 */
+	@Test(expected = TutorException.class)
+	public void criaTutorEmailVazioTeste() throws Exception {
+		tutorTeste = new Tutor("111222333", "  ", disciplinaTeste, 1);
+	}
+
+	/**
+	 * Testa a criacao de um Tutor com a Disciplina Nula
+	 * 
+	 * @author Luan Carlos
+	 * @version 1.1
+	 * @throws Exception
+	 */
+	@Test(expected = TutorException.class)
 	public void criaTutorDisciplinaNulaTeste() throws Exception {
-		tutorTeste = new Tutor(alunoTeste, null);
+		tutorTeste = new Tutor("111222333", "francis@andrade.com", null, 1);
 	}
 
 	/**
 	 * Testa a adicao de uma nova disciplina valida a colecao de disciplinas do
 	 * Tutor
-	 * @author 
+	 * 
+	 * @author
 	 * @version 1.0
 	 * @throws Exception
 	 */
@@ -84,166 +126,45 @@ public class TutorTest {
 	}
 
 	/**
-	 * Testa a adicao de uma nova disciplina nula a colecao de disciplinas do
-	 * Tutor
+	 * Testa a adicao de uma nova disciplina nula a colecao de disciplinas do Tutor
+	 * 
 	 * @author Luan Carlos
 	 * @version 1.1
 	 * @throws Exception
 	 */
-	@Test(expected = NullPointerException.class)
+	@Test(expected = TutorException.class)
 	public void addDisciplinaNulaTeste() throws Exception {
 		tutorTeste.addDisciplina(null);
 	}
 
 	/**
-	 * Testa a adicao de uma nova disciplina valida mas ja adicionada a colecao
-	 * de disciplinas do Tutor
-	 * @author 
+	 * Testa a adicao de uma nova disciplina valida mas ja adicionada a colecao de
+	 * disciplinas do Tutor
+	 * 
+	 * @author
 	 * @version 1.0
 	 * @throws Exception
 	 */
-	@Test(expected = DefinicaoException.class)
+	@Test(expected = TutorException.class)
 	public void addDisciplinaJaAdicionadaTeste() throws Exception {
 		tutorTeste.addDisciplina(disciplinaTeste);
 	}
 
 	/**
-	 * Testa a exibicao todas disciplinas cadastradas na colecao de disciplinas
-	 * do Tutor
-	 * @author 
+	 * Testa a exibicao todas disciplinas cadastradas na colecao de disciplinas do
+	 * Tutor
+	 * 
+	 * @author
 	 * @version 1.0
 	 * @throws Exception
+	 * @author Luan Carlos
+	 * @version 1.3
 	 */
 	@Test
 	public void exibeDisciplinasTeste() throws Exception {
 		tutorTeste.addDisciplina(disciplinaTeste2);
-		assertEquals("Programação 2 - 4" + System.lineSeparator() + "Lab. de Prog. 2 - 3" + System.lineSeparator(),
-				tutorTeste.exibeDisciplina());
-	}
-
-	/**
-	 * Testa a adicao de um local valido para o atendimento do Tutor
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void addLocalTeste() {
-		tutorTeste.addLocal("francis@andrade.com", "Cantinho Universitário");
-	}
-
-	/**
-	 * Testa a adicao de um email nulo para o atendimento do Tutor
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test(expected = NullOuEmBrancoException.class)
-	public void addLocalEmailInvalidoTeste() {
-		tutorTeste.addLocal(null, "bar da cabrita");
-	}
-
-	/**
-	 * Testa a adicao de um email vazio para o atendimento do Tutor
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test(expected = NullOuEmBrancoException.class)
-	public void addLocalEmailVazioTeste() {
-		tutorTeste.addLocal(" ", "bar da cabrita");
-	}
-
-	/**
-	 * Testa a adicao de um local nulo para o atendimento do Tutor
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test(expected = NullOuEmBrancoException.class)
-	public void addLocalLocalNullTeste() {
-		tutorTeste.addLocal("francis@andrade.com", null);
-	}
-
-	/**
-	 * Testa a adicao de um local vazio para o atendimento do Tutor
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test(expected = NullOuEmBrancoException.class)
-	public void addLocalLocalVazioTeste() {
-		tutorTeste.addLocal("francis@andrade.com", " ");
-	}
-
-	/**
-	 * Testa a adicao de um horario valido para o atendimento do Tutor
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void addHorarioTeste() {
-		tutorTeste.addHorario(horarioTeste);
-	}
-
-	/**
-	 * Testa o retorno da existencia de um horario quando nao criado
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void contemHorarioFalseTeste() {
-		assertEquals(false, tutorTeste.contemHorario(horarioTeste));
-	}
-
-	/**
-	 * Testa o retorno da existencia de um horario quando criado
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void contemHorarioTrueTeste() {
-		tutorTeste.addHorario(horarioTeste);
-		assertEquals(true, tutorTeste.contemHorario(horarioTeste));
-	}
-
-	/**
-	 * Testa o retorno da existencia de atendimento de um local quando nao
-	 * existente
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void contemLocalFalseTeste() {
-		assertEquals(false, tutorTeste.contemLocal("bar da cabrita"));
-	}
-
-	/**
-	 * Testa o retorno da existencia de atendimento de um local quando é
-	 * existente
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void contemLocalTrueTeste() {
-		tutorTeste.addLocal("francis@andrade.com", "bar da cabrita");
-		assertEquals(true, tutorTeste.contemLocal("bar da cabrita"));
-	}
-
-	/**
-	 * Testa o retorno da existencia de tutor quando nao esta cadastrado
-	 * @author 
-	 * @version 1.0
-	 */
-	@Test
-	public void contemEmailFalseTeste() {
-		assertEquals(false, tutorTeste.contemEmail("andrade@francis.com"));
-	}
-
-	/**
-	 * Testa o retorno da existencia de tutor quando esta cadastrado
-	 * 
-	 * @author
-	 * @version 1.0
-	 */
-	@Test
-	public void contemEmailTrueTeste() {
-		assertEquals(true, tutorTeste.contemEmail("francis@andrade.com"));
+		assertEquals("Lab. de Prog. 2 - 3" + System.lineSeparator() + "Programacao 2 - 4"+ System.lineSeparator(),
+				tutorTeste.exibeDisciplinas());
 	}
 
 	/**
@@ -254,7 +175,7 @@ public class TutorTest {
 	 */
 	@Test
 	public void toStringTeste() {
-		assertEquals("111222333 - Francis - 55 - 999-999 - francis@andrade.com", tutorTeste.toString());
+		assertEquals("111222333 - francis@andrade.com", tutorTeste.toString());
 	}
 
 }

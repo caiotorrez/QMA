@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import definicaoException.NumeroForaDosLimitesException;
+import tutor.TutorException;
 import tutor.Disciplina;
 
 /**
@@ -27,7 +27,7 @@ public class DisciplinaTeste {
 	 * Testa a criacao de disciplina com o nome nulo
 	 * @throws Exception
 	 */
-	@Test(expected = NullPointerException.class)
+	@Test(expected = TutorException.class)
 	public void disciplinaNomeNuloTeste() throws Exception {
 		disciplinaTeste = new Disciplina(null, 5);
 	}
@@ -36,7 +36,7 @@ public class DisciplinaTeste {
 	 * Testa a criacao de disciplina com o nome vazio
 	 * @throws Exception
 	 */
-	@Test(expected = NullPointerException.class)
+	@Test(expected = TutorException.class)
 	public void disciplinaNomeVazioTeste() throws Exception {
 		disciplinaTeste = new Disciplina(" ", 5);
 	}
@@ -45,7 +45,7 @@ public class DisciplinaTeste {
 	 * Testa a criacao de disciplina com o proficiencia invalida
 	 * @throws Exception
 	 */
-	@Test(expected = NumeroForaDosLimitesException.class)
+	@Test(expected = TutorException.class)
 	public void disciplinaProficienciaInvalidaTeste() throws Exception {
 		disciplinaTeste = new Disciplina("Programacao", 6);
 	}
@@ -54,7 +54,7 @@ public class DisciplinaTeste {
 	 * Testa a criacao de disciplina com o proficiencia invalida
 	 * @throws Exception
 	 */
-	@Test(expected = NumeroForaDosLimitesException.class)
+	@Test(expected = TutorException.class)
 	public void disciplinaProficienciaZeroTeste() throws Exception {
 		disciplinaTeste = new Disciplina("Programacao", 0);
 	}
@@ -63,7 +63,7 @@ public class DisciplinaTeste {
 	 * Testa a criacao de disciplina com o proficiencia invalida
 	 * @throws Exception
 	 */
-	@Test(expected = NumeroForaDosLimitesException.class)
+	@Test(expected = TutorException.class)
 	public void disciplinaProficienciaNegativaTeste() throws Exception {
 		disciplinaTeste = new Disciplina("Programacao", -1);
 	}

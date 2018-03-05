@@ -7,11 +7,12 @@
  */
 package alunosTeste;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import aluno.Aluno;
-import cadastroExceptions.NullOuEmBrancoException;
+import aluno.AlunoException;
 
 /**
  * Classe de Testes, referentes a Aluno
@@ -29,7 +30,7 @@ public class AlunoTeste {
 	 * @version 1.0
 	 * @author 
 	 */
-	@Test(expected = NullOuEmBrancoException.class)
+	@Test(expected = AlunoException.class)
 	public void nomeNuloTeste() throws Exception {
 		alunoTeste = new Aluno(null, "112233", 50, "000-000", "francis@andrade.com");
 	}
@@ -41,7 +42,7 @@ public class AlunoTeste {
 	 * @version 1.0
 	 * @author 
 	 */
-	@Test(expected = NullOuEmBrancoException.class)
+	@Test(expected = AlunoException.class)
 	public void nomeVazioTeste() throws Exception {
 		alunoTeste = new Aluno(" ", "112233", 50, "000-000", "francis@andrade.com");
 	}
@@ -53,7 +54,7 @@ public class AlunoTeste {
 	 * @version 1.1
 	 * @author Luan Carlos
 	 */
-	@Test(expected = NullOuEmBrancoException.class)
+	@Test(expected = AlunoException.class)
 	public void matriculaNuloTeste() throws Exception {
 		alunoTeste = new Aluno("Ricardo", null, 50, "000-000", "francis@andrade.com");
 	}
@@ -65,7 +66,7 @@ public class AlunoTeste {
 	 * @version 1.1
 	 * @author Luan Carlos
 	 */
-	@Test(expected = NullOuEmBrancoException.class)
+	@Test(expected = AlunoException.class)
 	public void matriculaVazioTeste() throws Exception {
 		alunoTeste = new Aluno("Ricardo", " ", 50, "000-000", "francis@andrade.com");
 	}
@@ -76,7 +77,7 @@ public class AlunoTeste {
 	 * @version 1.1
 	 * @author Luan Carlos
 	 */
-	@Test(expected = NullOuEmBrancoException.class)
+	@Test(expected = AlunoException.class)
 	public void emailNuloTeste() throws Exception {
 		alunoTeste = new Aluno("Breno", "112233", 50, "000-000", null);
 	}
@@ -88,7 +89,7 @@ public class AlunoTeste {
 	 * @version 1.1
 	 * @author Luan Carlos
 	 */
-	@Test(expected = NullOuEmBrancoException.class)
+	@Test(expected = AlunoException.class)
 	public void emailVazioTeste() throws Exception {
 		alunoTeste = new Aluno("Breno", "112233", 50, "000-000", " ");
 	}
