@@ -57,5 +57,9 @@ public class ControllerAjuda {
 			return this.serviceAjuda.getInfoAjuda(idAjuda, atributo);
 		}
 	}
+	
+	public void avaliarTutor(int id, int nota) {
+		this.serviceAjuda.concluirAjuda(id, nota);
+	}
 
 }

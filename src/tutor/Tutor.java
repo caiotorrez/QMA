@@ -70,18 +70,18 @@ public class Tutor implements Comparable<Tutor> {
 		return this.matricula;
 	}
 	
-	public void addAvaliacao(double avaliacao) {
-		this.avaliacao = (this.avaliacao * 5 + avaliacao) / 6;
-	}
-	
-	public double getAvaliacao() {
-		return this.avaliacao;
-	}
-
 	public int getId() {
 		return this.id;
 	}
 	
+	public void addAvaliacao(double avaliacao) {
+		this.avaliacao = (this.avaliacao * 5.0 + avaliacao) / 6.0;
+	}
+	
+	public double getAvaliacao() {
+		return this.avaliacao;		
+	}
+
 	public String getNivel() {
 		if (this.avaliacao > 4.5) {
 			return "TOP";
@@ -125,7 +125,7 @@ public class Tutor implements Comparable<Tutor> {
 		} else if (this.avaliacao > outroTutor.avaliacao) {
 			return 1;
 		}
-		if (this.id < outroTutor.id) {
+		else if (this.id < outroTutor.id) {
 			return -1;
 		} else if (this.id > outroTutor.id) {
 			return 1;

@@ -38,7 +38,7 @@ public abstract class Ajuda {
 		return this.matriculaAluno;
 	}
 	
-	public void concluirAjuda() {
+	public void setConcluirAjuda() {
 		this.concluida = true;
 	}
 	

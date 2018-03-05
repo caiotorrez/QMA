@@ -12,7 +12,7 @@ import servicos.ServiceTutor;
 public class Facade {
 	
 	private ServiceAluno serviceAluno = new ServiceAluno();
-	private ServiceTutor serviceTutor = new ServiceTutor(this.serviceAluno, this.serviceAjuda);
+	private ServiceTutor serviceTutor = new ServiceTutor(this.serviceAluno);
 	private ServiceHorarioLocais serviceHL = new ServiceHorarioLocais(this.serviceTutor);
 	private ServiceAjuda serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
 	private ControllerAluno alunoController = new ControllerAluno(this.serviceAluno);
@@ -79,6 +79,18 @@ public class Facade {
 	
 	public String getInfoAjuda(int idAjuda, String atributo) {
 		return this.ajudaController.getInfoAjuda(idAjuda, atributo);
+	}
+	
+	public void avaliarTutor(int idAjuda, int nota) {
+		this.ajudaController.avaliarTutor(idAjuda, nota);
+	}
+	
+	public String pegarNota(String matriculaTutor) {
+		return this.tutorController.pegarNota(matriculaTutor);
+	}
+	
+	public String pegarNivel(String matriculaTutor) {
+		return this.tutorController.pegarNivel(matriculaTutor);
 	}
 
 }

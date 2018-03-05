@@ -15,7 +15,7 @@ public class ServiceAjuda {
 	private List<Ajuda> ajudas;
 	
 	public ServiceAjuda(ServiceTutor serviceTutor, ServiceHorarioLocais serviceHL, ServiceAluno serviceAluno) {
-		this.ajudas= new ArrayList<>();
+		this.ajudas = new ArrayList<>();
 		this.serviceTutor = serviceTutor;
 		this.serviceHL = serviceHL;
 		this.serviceAluno = serviceAluno;
@@ -85,17 +85,25 @@ public class ServiceAjuda {
 		}
 	}
 	
-	public String concluirAjuda(int id) {
-		if (id > this.ajudas.size()) {
+	public void concluirAjuda(int id, int nota) {
+		if (nota < 0) {
+			throw new NumberFormatException("Erro na avaliacao de tutor: nota nao pode ser menor que 0");
+		}
+		else if (nota > 5) {
+			throw new NumberFormatException("Erro na avaliacao de tutor: nota nao pode ser maior que 5");
+		}
+		else if (id > this.ajudas.size()) {
 			throw new NullPointerException("Erro na avaliacao de tutor: id nao encontrado ");
+		}
+		else if (this.ajudas.get(id - 1).getMatriculaTutor() == null) {
+			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		}
 		else if (this.ajudas.get(id - 1).getConclusaoAjuda()) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda ja avaliada");
-		} 
-		else {
-			this.ajudas.get(id - 1).concluirAjuda();
-			return this.ajudas.get(id).getMatriculaTutor();
 		}
-		
+		else {
+			this.ajudas.get(id - 1).setConcluirAjuda();
+			this.serviceTutor.avaliarTutor(nota, this.ajudas.get(id - 1).getMatriculaTutor());
+		}
 	}
 }

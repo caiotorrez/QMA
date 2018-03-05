@@ -1,5 +1,6 @@
 package servicos;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,13 +13,12 @@ import tutor.Tutor;
 
 public class ServiceTutor {
 	
+	
 	private ServiceAluno serviceAluno;
-	private ServiceAjuda serviceAjuda;
 	private Map<String, Tutor> tutores;
 	
 	
-	public ServiceTutor(ServiceAluno serviceAluno, ServiceAjuda serviceAjuda) {
-		this.serviceAjuda = serviceAjuda;
+	public ServiceTutor(ServiceAluno serviceAluno) {
 		this.serviceAluno = serviceAluno;
 		this.tutores = new HashMap<>();
 	}
@@ -65,10 +65,7 @@ public class ServiceTutor {
 			}
 		return output;
 	}
-	
-	public double getAvalicaoTutor(String matricula) {
-		return this.tutores.get(matricula).getAvaliacao();
-	}
+
 	
 	public String melhorTutorAvaliado(String[] matriculas) {
 		List<Tutor> tutores = new ArrayList<>();
@@ -79,15 +76,20 @@ public class ServiceTutor {
 		return tutores.get(0).getMatricula();
 	}
 
-	public void avaliarTutor(int idAjuda, double nota) {
-		String matricula = this.serviceAjuda.concluirAjuda(idAjuda);
+	public void avaliarTutor(int nota, String matricula) {
 		if (matricula == null) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		} else {
 			this.tutores.get(matricula).addAvaliacao(nota);			
 		}
 	}
+	
+	public String getNota(String matricula) {
+		DecimalFormat formato = new DecimalFormat("0.00");
+		return formato.format(this.tutores.get(matricula).getAvaliacao());
+	}
 
-
-
+	public String getNivel(String matricula) {
+		return this.tutores.get(matricula).getNivel();
+	}
 }
