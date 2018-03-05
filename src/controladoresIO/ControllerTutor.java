@@ -35,11 +35,19 @@ public class ControllerTutor {
 	}
 	
 	public String pegarNota(String matriculaTutor) {
-		return this.serviceTutor.getNota(matriculaTutor);
+		if (matriculaTutor == null || matriculaTutor.trim().equals("")) {
+			throw new NullPointerException();
+		} else {
+			return this.serviceTutor.getNota(matriculaTutor);	
+		}
 	}
 
 	public String pegarNivel(String matriculaTutor) {
-		return this.serviceTutor.getNivel(matriculaTutor);
+		if (matriculaTutor == null || matriculaTutor.trim().equals("")) {
+			throw new NullPointerException();
+		} else {
+			return this.serviceTutor.getNivel(matriculaTutor);
+		}
 	}
 
 }

@@ -28,7 +28,6 @@ public class ControllerHorarioLocal {
 		return this.serviceHL.contemHorario(email, horario, dia);
 	}
 	
-	
 	public void cadastrarLocalDeAtendimento(String email, String local) {
 		if (email == null || email.trim().equals("")) {
 			throw new NullPointerException("Erro no cadastrar local de atendimento: email nao pode ser vazio ou em branco");

@@ -98,7 +98,7 @@ public class ServiceAjuda {
 		else if (id > this.ajudas.size()) {
 			throw new NullPointerException("Erro na avaliacao de tutor: id nao encontrado ");
 		}
-		else if (this.ajudas.get(id - 1).getMatriculaTutor().equals("666")) {
+		else if (this.ajudas.get(id - 1).getMatriculaTutor() == null) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		}
 		else if (this.ajudas.get(id - 1).getConclusaoAjuda()) {

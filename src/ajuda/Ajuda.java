@@ -19,7 +19,6 @@ public abstract class Ajuda {
 			this.matriculaAluno = matrAluno;
 			this.disciplina = disciplina;
 			this.concluida = false;
-			this.matriculaTutor = "666";
 		}
 	}
 	

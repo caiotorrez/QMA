@@ -21,7 +21,7 @@ public class Tutor implements Comparable<Tutor> {
 	private Map<String, Disciplina> disciplinas;
 	private String matricula;
 	private String email;
-	private double avaliacao;
+	private float avaliacao;
 	private int id;
 
 	public Tutor(String matricula, String email, Disciplina disciplina, int id) {
@@ -74,8 +74,8 @@ public class Tutor implements Comparable<Tutor> {
 		return this.id;
 	}
 	
-	public void addAvaliacao(double avaliacao) {
-		this.avaliacao = (this.avaliacao * 5.0 + avaliacao) / 6.0;
+	public void addAvaliacao(int avaliacao) {
+		this.avaliacao = (this.avaliacao * 5 + avaliacao) / 6;
 	}
 	
 	public double getAvaliacao() {
