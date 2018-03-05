@@ -6,6 +6,7 @@ import controladoresIO.ControllerHorarioLocal;
 import controladoresIO.ControllerTutor;
 import servicos.ServiceAjuda;
 import servicos.ServiceAluno;
+import servicos.ServiceCaixaSistema;
 import servicos.ServiceHorarioLocais;
 import servicos.ServiceTutor;
 
@@ -15,10 +16,12 @@ public class Facade {
 	private ServiceTutor serviceTutor = new ServiceTutor(this.serviceAluno);
 	private ServiceHorarioLocais serviceHL = new ServiceHorarioLocais(this.serviceTutor);
 	private ServiceAjuda serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
+	private ServiceCaixaSistema serviceCaixa = new ServiceCaixaSistema();
 	private ControllerAluno alunoController = new ControllerAluno(this.serviceAluno);
 	private ControllerTutor tutorController = new ControllerTutor(this.serviceTutor);
 	private ControllerHorarioLocal horarioLocalController = new ControllerHorarioLocal(this.serviceHL);
 	private ControllerAjuda ajudaController = new ControllerAjuda(this.serviceAjuda);
+	private ControllerCaixa caixaController = new ControllerCaixa(this.serviceCaixa);
 	
 	
 	public void cadastrarAluno(String nome, String matricula, int codigoCurso, String telefone, String email) {
@@ -93,4 +96,15 @@ public class Facade {
 		return this.tutorController.pegarNivel(matriculaTutor);
 	}
 
+	public void doar(String matriculaTutor, int totalCentavos) {
+		this.tutorController.doar(matriculaTutor, totalCentavos);
+	}
+	
+	public int totalDinheiroTutor(String emailTutor) {
+		return this.tutorController.totalDinheiroTutor(emailTutor);
+	}
+	
+	public int totalDinheiroSistema() {
+		return this.caixaController.retornaValorCaixa();
+	}
 }

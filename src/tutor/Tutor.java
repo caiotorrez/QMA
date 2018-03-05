@@ -22,6 +22,7 @@ public class Tutor implements Comparable<Tutor> {
 	private String matricula;
 	private String email;
 	private double avaliacao;
+	private int carteira;
 	private int id;
 
 	public Tutor(String matricula, String email, Disciplina disciplina, int id) {
@@ -41,6 +42,7 @@ public class Tutor implements Comparable<Tutor> {
 		this.disciplinas.put(disciplina.getID(), disciplina);
 		this.avaliacao = 4.00;
 		this.id = id;
+		this.carteira = 0;
 	}
 
 
@@ -80,6 +82,14 @@ public class Tutor implements Comparable<Tutor> {
 	
 	public double getAvaliacao() {
 		return this.avaliacao;		
+	}
+	
+	public int getCarteira() {
+		return this.carteira;
+	}
+	
+	public void setCarteira(int valor) {
+		this.carteira += valor;
 	}
 
 	public String getNivel() {

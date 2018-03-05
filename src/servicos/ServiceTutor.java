@@ -12,24 +12,24 @@ import tutor.Disciplina;
 import tutor.Tutor;
 
 public class ServiceTutor {
-	
-	
+
 	private ServiceAluno serviceAluno;
-	private Map<String, Tutor> tutores;	
-	
+	private ServiceCaixaSistema serviceCaixa;
+	private Map<String, Tutor> tutores;
+
 	public ServiceTutor(ServiceAluno serviceAluno) {
 		this.serviceAluno = serviceAluno;
 		this.tutores = new HashMap<>();
 	}
-		
+
 	public void addTutor(String matricula, String disciplina, int proficiencia) {
 		if (!this.serviceAluno.containsAluno(matricula)) {
 			throw new NullPointerException("Erro na definicao de papel: Tutor nao encontrado");
-		}
-		else if (this.tutores.containsKey(matricula)) {
+		} else if (this.tutores.containsKey(matricula)) {
 			this.tutores.get(matricula).addDisciplina(new Disciplina(disciplina, proficiencia));
 		} else {
-			this.tutores.put(matricula, new Tutor(matricula, this.serviceAluno.getInfoAluno(matricula, "Email"), new Disciplina(disciplina, proficiencia),this.tutores.size()));
+			this.tutores.put(matricula, new Tutor(matricula, this.serviceAluno.getInfoAluno(matricula, "Email"),
+					new Disciplina(disciplina, proficiencia), this.tutores.size()));
 		}
 	}
 
@@ -39,7 +39,7 @@ public class ServiceTutor {
 		}
 		return null;
 	}
-	
+
 	public String getAllTutores() {
 		String saida = "";
 		Map<String, String> tutores = new TreeMap<>();
@@ -55,17 +55,16 @@ public class ServiceTutor {
 	public boolean containsTutor(String matricula) {
 		return this.tutores.containsKey(matricula);
 	}
-	
+
 	public String searchTutor(String disciplina) {
 		String output = "";
 		for (Tutor tutor : this.tutores.values()) {
 			if (tutor.exibeDisciplinas().contains(disciplina))
 				output += tutor.getMatricula() + ",";
-			}
+		}
 		return output;
 	}
 
-	
 	public String melhorTutorAvaliado(String[] matriculas) {
 		List<Tutor> tutores = new ArrayList<>();
 		for (String matricula : matriculas) {
@@ -79,10 +78,10 @@ public class ServiceTutor {
 		if (matricula == null) {
 			throw new NullPointerException("Erro na avaliacao de tutor: Ajuda nao atribuida a tutor");
 		} else {
-			this.tutores.get(matricula).addAvaliacao(nota);			
+			this.tutores.get(matricula).addAvaliacao(nota);
 		}
 	}
-	
+
 	public String getNota(String matricula) {
 		DecimalFormat formato = new DecimalFormat("0.00");
 		return formato.format(this.tutores.get(matricula).getAvaliacao());
@@ -90,5 +89,35 @@ public class ServiceTutor {
 
 	public String getNivel(String matricula) {
 		return this.tutores.get(matricula).getNivel();
+	}
+
+	public void doar(String matriculaTutor, int totalCentavos) {
+		if (totalCentavos <= 0) {
+			throw new NullPointerException("Erro na doacao para tutor: totalCentavos nao pode ser menor que zero");
+		} else if (tutores.containsKey(matriculaTutor)) {
+			Tutor tutorProcurado = this.tutores.get(matriculaTutor);
+			double taxa =  tutorProcurado.getAvaliacao();
+			int total_tutor = 0;
+			int total_sistema = 0;
+			if (tutorProcurado.getNivel().equalsIgnoreCase("TOP")) {
+				taxa = (taxa - 4.5) + 9;
+				total_sistema = (int) (((10 - taxa)/10) * totalCentavos);
+			} else if (tutorProcurado.getNivel().equalsIgnoreCase("Tutor")) {
+				total_sistema = 2 * totalCentavos * 10;
+			} else if (tutorProcurado.getNivel().equalsIgnoreCase("Aprendiz")) {
+				taxa = (3.0 - taxa) + 6;
+				total_sistema = (int) ((40 - taxa)/10 * totalCentavos);
+			}
+			tutorProcurado.setCarteira(total_tutor);
+			serviceCaixa.adicionaValorAoCaixa(total_sistema);
+		} else
+			throw new NullPointerException("Erro na doacao para tutor: Tutor nao encontrado");
+	}
+
+	public int totalDinheiroTutor(String emailTutor) {
+		if(tutores.containsKey(emailTutor))
+			return this.tutores.get(emailTutor).getCarteira();
+		else
+			throw new NullPointerException("Erro na consulta de total de dinheiro do tutor: Tutor nao encontrado");
 	}
 }
