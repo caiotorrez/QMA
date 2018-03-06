@@ -82,8 +82,11 @@ public class ServiceTutor {
 	}
 
 	public String getNota(String matricula) {
+		String saida = "";
 		DecimalFormat formato = new DecimalFormat("0.00");
-		return formato.format(this.tutores.get(matricula).getAvaliacao());
+		saida = formato.format(this.tutores.get(matricula).getAvaliacao());
+		saida = saida.replace(".", ",");
+		return saida;
 	}
 
 	public String getNivel(String matricula) {
