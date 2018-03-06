@@ -21,15 +21,16 @@ import tutor.Tutor;
 /**
  * Classe de Testes referente a Tutor
  * 
- * @version 1.1
  * @author
  * @version 1.3
  * @author Luan Carlos
  */
 public class TutorTest {
 	private Tutor tutorTeste;
+	private Tutor tutorTeste2;
 	@SuppressWarnings("unused")
 	private Aluno alunoTeste;
+	private Aluno alunoTeste2;
 	private Disciplina disciplinaTeste;
 	private Disciplina disciplinaTeste2;
 	@SuppressWarnings("unused")
@@ -46,6 +47,7 @@ public class TutorTest {
 	@Before
 	public void setUp() throws Exception {
 		alunoTeste = new Aluno("Francis", "111222333", 55, "999-999", "francis@andrade.com");
+		alunoTeste2 = new Aluno("Andrade", "111222333", 55, "888-888", "andrade@andrade.com");
 		disciplinaTeste = new Disciplina("Programacao 2", 4);
 		disciplinaTeste2 = new Disciplina("Lab. de Prog. 2", 3);
 		tutorTeste = new Tutor("111222333", "francis@andrade.com", disciplinaTeste, 1);
@@ -163,7 +165,7 @@ public class TutorTest {
 	@Test
 	public void exibeDisciplinasTeste() throws Exception {
 		tutorTeste.addDisciplina(disciplinaTeste2);
-		assertEquals("Lab. de Prog. 2 - 3" + System.lineSeparator() + "Programacao 2 - 4"+ System.lineSeparator(),
+		assertEquals("Lab. de Prog. 2 - 3" + System.lineSeparator() + "Programacao 2 - 4" + System.lineSeparator(),
 				tutorTeste.exibeDisciplinas());
 	}
 

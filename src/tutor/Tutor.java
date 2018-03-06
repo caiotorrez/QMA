@@ -17,7 +17,6 @@ import java.util.Map;
  * @version 1.0
  */
 public class Tutor implements Comparable<Tutor> {
-	
 	private Map<String, Disciplina> disciplinas;
 	private String matricula;
 	private String email;
@@ -26,16 +25,16 @@ public class Tutor implements Comparable<Tutor> {
 	private int id;
 
 	public Tutor(String matricula, String email, Disciplina disciplina, int id) {
-		if(disciplina == null) {
-			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Disciplina nao pode ser nula"));
+		if (disciplina == null) {
+			throw new TutorException(
+					new NullPointerException("Erro na criacao do Tutor: Disciplina nao pode ser nula"));
+		} else if (matricula == null || matricula.trim().equals("")) {
+			throw new TutorException(
+					new NullPointerException("Erro na criacao do Tutor: Matricula nao pode ser nulo ou em branco"));
+		} else if (email == null || email.trim().equals("")) {
+			throw new TutorException(
+					new NullPointerException("Erro na criacao do Tutor: Email nao pode ser nulo ou em branco"));
 		}
-		else if (matricula == null || matricula.trim().equals("")) {
-			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Matricula nao pode ser nulo ou em branco"));
-		}
-		else if (email == null || email.trim().equals("")) {
-			throw new TutorException(new NullPointerException("Erro na criacao do Tutor: Email nao pode ser nulo ou em branco"));
-		}
-		
 		this.disciplinas = new HashMap<>();
 		this.matricula = matricula;
 		this.email = email;
@@ -45,17 +44,17 @@ public class Tutor implements Comparable<Tutor> {
 		this.carteira = 0;
 	}
 
-
 	public void addDisciplina(Disciplina disciplina) {
-		if(disciplina == null)
-			throw new TutorException(new NullPointerException("Erro na adicao de disciplinas ao Tuto: Disciplina nao pode ser nula"));
+		if (disciplina == null)
+			throw new TutorException(
+					new NullPointerException("Erro na adicao de disciplinas ao Tuto: Disciplina nao pode ser nula"));
 		else if (this.disciplinas.containsKey(disciplina.getID())) {
 			throw new TutorException("Erro na definicao de papel: Ja eh tutor dessa disciplina");
 		} else {
 			this.disciplinas.put(disciplina.getID(), disciplina);
 		}
 	}
-	
+
 	public String exibeDisciplinas() {
 		String saida = "";
 		for (String matricula : this.disciplinas.keySet()) {
@@ -63,31 +62,31 @@ public class Tutor implements Comparable<Tutor> {
 		}
 		return saida;
 	}
-	
+
 	public String getEmail() {
 		return this.email;
 	}
-	
+
 	public String getMatricula() {
 		return this.matricula;
 	}
-	
+
 	public int getId() {
 		return this.id;
 	}
-	
+
 	public void addAvaliacao(int avaliacao) {
 		this.avaliacao = (this.avaliacao * 5 + avaliacao) / 6;
 	}
-	
+
 	public double getAvaliacao() {
-		return this.avaliacao;		
+		return this.avaliacao;
 	}
-	
+
 	public int getCarteira() {
 		return this.carteira;
 	}
-	
+
 	public void setCarteira(int valor) {
 		this.carteira += valor;
 	}
@@ -109,7 +108,6 @@ public class Tutor implements Comparable<Tutor> {
 		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -134,15 +132,14 @@ public class Tutor implements Comparable<Tutor> {
 			return -1;
 		} else if (this.avaliacao > outroTutor.avaliacao) {
 			return 1;
-		}
-		else if (this.id < outroTutor.id) {
+		} else if (this.id < outroTutor.id) {
 			return -1;
 		} else if (this.id > outroTutor.id) {
 			return 1;
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.matricula + " - " + this.email;

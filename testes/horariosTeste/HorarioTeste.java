@@ -14,7 +14,8 @@ import tempo.TempoException;
 
 /**
  * Classe de Testes referente a Horario
- * @author 
+ * 
+ * @author
  * @version 1.0
  *
  */
