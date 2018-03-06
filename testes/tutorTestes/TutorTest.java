@@ -27,9 +27,11 @@ import tutor.Tutor;
  */
 public class TutorTest {
 	private Tutor tutorTeste;
+	@SuppressWarnings("unused")
 	private Tutor tutorTeste2;
 	@SuppressWarnings("unused")
 	private Aluno alunoTeste;
+	@SuppressWarnings("unused")
 	private Aluno alunoTeste2;
 	private Disciplina disciplinaTeste;
 	private Disciplina disciplinaTeste2;

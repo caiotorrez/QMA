@@ -5,7 +5,7 @@
  * MATRICULAS -  -  - 116.110.100
  * PROJETO FINAL - QUEM ME AJUDA
  */
-package horariosTeste;
+package tempoTeste;
 
 import org.junit.Test;
 
