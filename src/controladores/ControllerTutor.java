@@ -1,4 +1,4 @@
-package controladoresIO;
+package controladores;
 
 import servicos.ServiceTutor;
 

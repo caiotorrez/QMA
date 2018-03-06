@@ -1,10 +1,10 @@
 package fabrica;
 
 import classePrincipal.ControllerCaixa;
-import controladoresIO.ControllerAjuda;
-import controladoresIO.ControllerAluno;
-import controladoresIO.ControllerHorarioLocal;
-import controladoresIO.ControllerTutor;
+import controladores.ControllerAjuda;
+import controladores.ControllerAluno;
+import controladores.ControllerHorarioLocal;
+import controladores.ControllerTutor;
 import servicos.ServiceAjuda;
 import servicos.ServiceAluno;
 import servicos.ServiceCaixaSistema;
