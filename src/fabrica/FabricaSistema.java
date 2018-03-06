@@ -11,7 +11,7 @@ import servicos.ServiceCaixaSistema;
 import servicos.ServiceHorarioLocais;
 import servicos.ServiceTutor;
 
-public class FabricaSistema implements Fabrica<FabricaSistema> {
+public final class FabricaSistema {
 	private ServiceAluno serviceAluno;
 	private ServiceTutor serviceTutor;
 	private ServiceHorarioLocais serviceHL;
@@ -23,7 +23,10 @@ public class FabricaSistema implements Fabrica<FabricaSistema> {
 	private ControllerAjuda ajudaController;
 	private ControllerCaixa caixaController;
 
-	@Override
+	public FabricaSistema() {
+		this.create();
+	}
+
 	public void create() {
 		this.serviceAluno = new ServiceAluno();
 		this.serviceTutor = new ServiceTutor(this.serviceAluno);
@@ -35,6 +38,26 @@ public class FabricaSistema implements Fabrica<FabricaSistema> {
 		this.horarioLocalController = new ControllerHorarioLocal(this.serviceHL);
 		this.ajudaController = new ControllerAjuda(this.serviceAjuda);
 		this.caixaController = new ControllerCaixa(this.serviceCaixa);
+	}
+	
+	public ControllerAluno getAlunoController() {
+		return this.alunoController;
+	}
+
+	public ControllerTutor getTutorController() {
+		return this.tutorController;
+	}
+	
+	public ControllerHorarioLocal getHorarioLocalController() {
+		return this.horarioLocalController;
+	}
+	
+	public ControllerAjuda getAjudaController() {
+		return this.ajudaController;
+	}
+	
+	public ControllerCaixa getCaixaController() {
+		return this.caixaController;
 	}
 
 }

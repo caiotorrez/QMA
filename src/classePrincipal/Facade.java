@@ -1,106 +1,95 @@
 package classePrincipal;
 
-import controladoresIO.ControllerAjuda;
-import controladoresIO.ControllerAluno;
-import controladoresIO.ControllerHorarioLocal;
-import controladoresIO.ControllerTutor;
-import fabrica.Fabrica;
 import fabrica.FabricaSistema;
-import servicos.ServiceAjuda;
-import servicos.ServiceAluno;
-import servicos.ServiceCaixaSistema;
-import servicos.ServiceHorarioLocais;
-import servicos.ServiceTutor;
 
 public class Facade {
-	private Fabrica<FabricaSistema> fabricaSistema;
+	private FabricaSistema fabricaSistema;
 	
 	public Facade() {
 		this.fabricaSistema = new FabricaSistema();
-		this.fabricaSistema.create();
 	}
 	
 	public void cadastrarAluno(String nome, String matricula, int codigoCurso, String telefone, String email) {
-		this.alunoController.cadastrarAluno(nome, matricula, codigoCurso, telefone, email);
+		this.fabricaSistema.getAlunoController().cadastrarAluno(nome, matricula, codigoCurso, telefone, email);
 	}
 	
 	public String recuperaAluno(String matricula) {
-		return this.alunoController.recuperaAluno(matricula);
+		return this.fabricaSistema.getAlunoController().recuperaAluno(matricula);
 	}
 	
 	public String listarAlunos() {
-		return this.alunoController.listarAlunos();
+		return this.fabricaSistema.getAlunoController().listarAlunos();
 	}
 	
 	public String getInfoAluno(String matricula, String atributo) {
-		return this.alunoController.getInfoAluno(matricula, atributo);
+		return this.fabricaSistema.getAlunoController().getInfoAluno(matricula, atributo);
 	}
 	
 	public void tornarTutor(String matricula, String disciplina, int proficiencia) {
-		this.tutorController.tornarTutor(matricula, disciplina, proficiencia);
+		this.fabricaSistema.getTutorController().tornarTutor(matricula, disciplina, proficiencia);
 	}
 	
 	public String recuperaTutor(String matricula) {
-		return this.tutorController.recuperaTutor(matricula);
+		return this.fabricaSistema.getTutorController().recuperaTutor(matricula);
 	}
 	
 	public String listarTutores() {
-		return this.tutorController.listarTutores();
+		return this.fabricaSistema.getTutorController().listarTutores();
 	}
 	
 	public void cadastrarHorario(String email, String horario, String dia) {
-		horarioLocalController.cadastrarHorario(email, horario, dia);
+		this.fabricaSistema.getHorarioLocalController().cadastrarHorario(email, horario, dia);
 	}
 	
 	public void cadastrarLocalDeAtendimento(String email, String local) {
-		horarioLocalController.cadastrarLocalDeAtendimento(email, local);
+		this.fabricaSistema.getHorarioLocalController().cadastrarLocalDeAtendimento(email, local);
 	}
 	
 	public boolean consultaHorario(String email, String horario, String dia) {
-		return horarioLocalController.consultaHorario(email, horario, dia);
+		return this.fabricaSistema.getHorarioLocalController().consultaHorario(email, horario, dia);
 	}
 	
 	public boolean consultaLocal(String email, String local) {
-		return horarioLocalController.consultaLocal(email, local);
+		return this.fabricaSistema.getHorarioLocalController().consultaLocal(email, local);
 	}
 	
 	public int pedirAjudaPresencial (String matrAluno, String disciplina, String horario, String dia, String localInteresse) {
-		return this.ajudaController.pedirAjudaPresencial(matrAluno, disciplina, horario, dia, localInteresse);
+		return this.fabricaSistema.getAjudaController().pedirAjudaPresencial(matrAluno, disciplina, horario, dia, localInteresse);
 	}
 	
 	public int pedirAjudaOnline (String matrAluno, String disciplina) {
-		return this.ajudaController.pedirAjudaOnline(matrAluno, disciplina);
+		return this.fabricaSistema.getAjudaController().pedirAjudaOnline(matrAluno, disciplina);
 	}
 	
 	public String pegarTutor(int idAjuda) {
-		return this.ajudaController.pegarTutor(idAjuda);
+		return this.fabricaSistema.getAjudaController().pegarTutor(idAjuda);
 	}
 	
 	public String getInfoAjuda(int idAjuda, String atributo) {
-		return this.ajudaController.getInfoAjuda(idAjuda, atributo);
+		return this.fabricaSistema.getAjudaController().getInfoAjuda(idAjuda, atributo);
 	}
 	
 	public void avaliarTutor(int idAjuda, int nota) {
-		this.ajudaController.avaliarTutor(idAjuda, nota);
+		this.fabricaSistema.getAjudaController().avaliarTutor(idAjuda, nota);
 	}
 	
 	public String pegarNota(String matriculaTutor) {
-		return this.tutorController.pegarNota(matriculaTutor);
+		return this.fabricaSistema.getTutorController().pegarNota(matriculaTutor);
 	}
 	
 	public String pegarNivel(String matriculaTutor) {
-		return this.tutorController.pegarNivel(matriculaTutor);
+		return this.fabricaSistema.getTutorController().pegarNivel(matriculaTutor);
 	}
 
 	public void doar(String matriculaTutor, int totalCentavos) {
-		this.tutorController.doar(matriculaTutor, totalCentavos);
+		this.fabricaSistema.getTutorController().doar(matriculaTutor, totalCentavos);
 	}
 	
 	public int totalDinheiroTutor(String emailTutor) {
-		return this.tutorController.totalDinheiroTutor(emailTutor);
+		return this.fabricaSistema.getTutorController().totalDinheiroTutor(emailTutor);
 	}
 	
 	public int totalDinheiroSistema() {
-		return this.caixaController.retornaValorCaixa();
+		return this.fabricaSistema.getCaixaController().retornaValorCaixa();
 	}
 }
