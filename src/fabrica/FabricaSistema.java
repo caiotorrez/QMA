@@ -32,7 +32,7 @@ public final class FabricaSistema {
 		this.serviceTutor = new ServiceTutor(this.serviceAluno);
 		this.serviceHL = new ServiceHorarioLocais(this.serviceTutor);
 		this.serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
-		this.serviceCaixa = new ServiceCaixaSistema();
+		this.serviceCaixa = new ServiceCaixaSistema(this.serviceTutor);
 		this.alunoController = new ControllerAluno(this.serviceAluno);
 		this.tutorController = new ControllerTutor(this.serviceTutor);
 		this.horarioLocalController = new ControllerHorarioLocal(this.serviceHL);

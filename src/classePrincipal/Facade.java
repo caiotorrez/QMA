@@ -82,11 +82,11 @@ public class Facade {
 	}
 
 	public void doar(String matriculaTutor, int totalCentavos) {
-		this.fabricaSistema.getTutorController().doar(matriculaTutor, totalCentavos);
+		this.fabricaSistema.getCaixaController().doar(matriculaTutor, totalCentavos);
 	}
 	
 	public int totalDinheiroTutor(String emailTutor) {
-		return this.fabricaSistema.getTutorController().totalDinheiroTutor(emailTutor);
+		return this.fabricaSistema.getCaixaController().totalDinheiroTutor(emailTutor);
 	}
 	
 	public int totalDinheiroSistema() {

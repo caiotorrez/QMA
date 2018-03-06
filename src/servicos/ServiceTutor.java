@@ -14,7 +14,6 @@ import modelos.tutor.Tutor;
 public class ServiceTutor {
 
 	private ServiceAluno serviceAluno;
-	private ServiceCaixaSistema serviceCaixa;
 	private Map<String, Tutor> tutores;
 
 	public ServiceTutor(ServiceAluno serviceAluno) {
@@ -33,9 +32,9 @@ public class ServiceTutor {
 		}
 	}
 
-	public String getTutor(String matricula) {
+	public Tutor getTutor(String matricula) {
 		if (this.tutores.containsKey(matricula)) {
-			return this.serviceAluno.toStringAluno(matricula);
+			return this.tutores.get(matricula);
 		}
 		return null;
 	}
@@ -89,34 +88,5 @@ public class ServiceTutor {
 
 	public String getNivel(String matricula) {
 		return this.tutores.get(matricula).getNivel();
-	}
-
-	public void doar(String matriculaTutor, int totalCentavos) {
-		if (totalCentavos <= 0) 
-			throw new NullPointerException("Erro na doacao para tutor: totalCentavos nao pode ser menor que zero");
-		if (getTutor(matriculaTutor) != null) {
-			double taxa = this.tutores.get(matriculaTutor).getAvaliacao();
-			int total_tutor = 0;
-			int total_sistema = 0;
-			if (getNivel(matriculaTutor).equalsIgnoreCase("TOP")) {
-				taxa = (int) ((taxa - 4.5) + 9)*10;
-				total_sistema = (int) (((100 - taxa)/100) * totalCentavos);
-			} else if (getNivel(matriculaTutor).equalsIgnoreCase("Tutor")) {
-				total_sistema = 2 * totalCentavos * 10;
-			} else if (getNivel(matriculaTutor).equalsIgnoreCase("Aprendiz")) {
-				taxa = ((3.0 - taxa) + 6)*10;
-				total_sistema = (int) ((400 - taxa)/100 * totalCentavos);
-			}
-			this.tutores.get(matriculaTutor).setCarteira(total_tutor);
-			serviceCaixa.adicionaValorAoCaixa(total_sistema);
-		} else
-			throw new NullPointerException("Erro na doacao para tutor: Tutor nao encontrado");
-	}
-
-	public int totalDinheiroTutor(String emailTutor) {
-		if(getTutor(emailTutor) == null)
-			throw new NullPointerException("Erro na consulta de total de dinheiro do tutor: Tutor nao encontrado");
-		else
-			return this.tutores.get(emailTutor).getCarteira();			
 	}
 }
