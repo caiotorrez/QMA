@@ -98,14 +98,14 @@ public class ServiceTutor {
 			double taxa = this.tutores.get(matriculaTutor).getAvaliacao();
 			int total_tutor = 0;
 			int total_sistema = 0;
-			if (this.tutores.get(matriculaTutor).getNivel().equalsIgnoreCase("TOP")) {
-				taxa = (taxa - 4.5) + 9;
-				total_sistema = (int) (((10 - taxa)/10) * totalCentavos);
-			} else if (this.tutores.get(matriculaTutor).getNivel().equalsIgnoreCase("Tutor")) {
+			if (getNivel(matriculaTutor).equalsIgnoreCase("TOP")) {
+				taxa = (int) ((taxa - 4.5) + 9)*10;
+				total_sistema = (int) (((100 - taxa)/100) * totalCentavos);
+			} else if (getNivel(matriculaTutor).equalsIgnoreCase("Tutor")) {
 				total_sistema = 2 * totalCentavos * 10;
-			} else if (this.tutores.get(matriculaTutor).getNivel().equalsIgnoreCase("Aprendiz")) {
-				taxa = (3.0 - taxa) + 6;
-				total_sistema = (int) ((40 - taxa)/10 * totalCentavos);
+			} else if (getNivel(matriculaTutor).equalsIgnoreCase("Aprendiz")) {
+				taxa = ((3.0 - taxa) + 6)*10;
+				total_sistema = (int) ((400 - taxa)/100 * totalCentavos);
 			}
 			this.tutores.get(matriculaTutor).setCarteira(total_tutor);
 			serviceCaixa.adicionaValorAoCaixa(total_sistema);
