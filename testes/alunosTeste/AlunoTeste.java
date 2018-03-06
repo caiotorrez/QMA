@@ -22,13 +22,14 @@ import aluno.AlunoException;
  */
 public class AlunoTeste {
 	private Aluno alunoTeste;
+	private Aluno alunoTeste2;
 
 	/**
 	 * Testa a criacao de um Aluno com o nome nulo.
 	 * 
 	 * @throws Exception
 	 * @version 1.0
-	 * @author 
+	 * @author
 	 */
 	@Test(expected = AlunoException.class)
 	public void nomeNuloTeste() throws Exception {
@@ -40,7 +41,7 @@ public class AlunoTeste {
 	 * 
 	 * @throws Exception
 	 * @version 1.0
-	 * @author 
+	 * @author
 	 */
 	@Test(expected = AlunoException.class)
 	public void nomeVazioTeste() throws Exception {
@@ -70,6 +71,7 @@ public class AlunoTeste {
 	public void matriculaVazioTeste() throws Exception {
 		alunoTeste = new Aluno("Ricardo", " ", 50, "000-000", "francis@andrade.com");
 	}
+
 	/**
 	 * Testa a criacao de um Aluno com o email nulo.
 	 * 
@@ -93,17 +95,32 @@ public class AlunoTeste {
 	public void emailVazioTeste() throws Exception {
 		alunoTeste = new Aluno("Breno", "112233", 50, "000-000", " ");
 	}
+
 	/**
 	 * Testa a Criacao do aluno com um telefone.
 	 * 
 	 * @throws Exception
 	 * @version 1.0
-	 * @author 
+	 * @author
 	 */
 	@Test
 	public void toStringComTelefoneTest() throws Exception {
 		alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");
 		assertEquals("111222333 - Francis - 45 - 9999-9999 - francis@andrade.com", alunoTeste.toString());
+	}
+
+	@Test
+	public void equalsMatriculasIguaisTeste() {
+		alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");
+		alunoTeste2 = new Aluno("Andrade", "111222333", 45, "8888-8888", "andrade@andrade.com");
+		assertEquals(true, alunoTeste.equals(alunoTeste2));
+	}
+
+	@Test
+	public void equalsMatriculasDiferentesTeste() {
+		alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");
+		alunoTeste2 = new Aluno("Francis", "444555666", 45, "9999-9999", "francis@andrade.com");
+		assertEquals(false, alunoTeste.equals(alunoTeste2));
 	}
 
 }
