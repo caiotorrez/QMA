@@ -27,7 +27,7 @@ public class ControllerTutor {
 		if (!this.serviceTutor.containsTutor(matricula)) {
 			throw new NullPointerException("Erro na busca por tutor: Tutor nao encontrado");
 		}
-		return this.serviceTutor.getTutor(matricula).toString();
+		return this.serviceTutor.getToStringTutor(matricula);
 	}
 	
 	public String listarTutores() {

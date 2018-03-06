@@ -38,6 +38,13 @@ public class ServiceTutor {
 		}
 		return null;
 	}
+	
+	public String getToStringTutor(String matricula) {
+		if (this.tutores.containsKey(matricula)) {
+			return this.serviceAluno.toStringAluno(matricula);
+		}
+		return null;
+	}
 
 	public String getAllTutores() {
 		String saida = "";
