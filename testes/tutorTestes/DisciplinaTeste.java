@@ -16,15 +16,18 @@ import tutor.Disciplina;
 
 /**
  * Classe de Testes referente a Disciplina
- * @author 
+ * 
+ * @author
  * @version 1.0
  *
  */
 public class DisciplinaTeste {
 	private Disciplina disciplinaTeste;
+	private Disciplina disciplinaTeste2;
 
 	/**
 	 * Testa a criacao de disciplina com o nome nulo
+	 * 
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
@@ -34,6 +37,7 @@ public class DisciplinaTeste {
 
 	/**
 	 * Testa a criacao de disciplina com o nome vazio
+	 * 
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
@@ -43,6 +47,7 @@ public class DisciplinaTeste {
 
 	/**
 	 * Testa a criacao de disciplina com o proficiencia invalida
+	 * 
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
@@ -52,6 +57,7 @@ public class DisciplinaTeste {
 
 	/**
 	 * Testa a criacao de disciplina com o proficiencia invalida
+	 * 
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
@@ -61,21 +67,37 @@ public class DisciplinaTeste {
 
 	/**
 	 * Testa a criacao de disciplina com o proficiencia invalida
+	 * 
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
 	public void disciplinaProficienciaNegativaTeste() throws Exception {
 		disciplinaTeste = new Disciplina("Programacao", -1);
 	}
-	
+
 	/**
 	 * Testa a representacao Textual da Disciplina
+	 * 
 	 * @throws Exception
 	 */
 	@Test
 	public void toStringTeste() throws Exception {
 		disciplinaTeste = new Disciplina("Programação 2", 4);
 		assertEquals("Programação 2 - 4", disciplinaTeste.toString());
+	}
+
+	@Test
+	public void equalsNomeDisciplinasIguaisTeste() {
+		disciplinaTeste = new Disciplina("Programação 2", 4);
+		disciplinaTeste2 = new Disciplina("Programação 2", 5);
+		assertEquals(true, disciplinaTeste.equals(disciplinaTeste2));
+	}
+	
+	@Test
+	public void equalsNomeDisciplinasDiferentesTeste() {
+		disciplinaTeste = new Disciplina("Programação 2", 4);
+		disciplinaTeste2 = new Disciplina("Programação 1", 5);
+		assertEquals(false, disciplinaTeste.equals(disciplinaTeste2));
 	}
 
 }

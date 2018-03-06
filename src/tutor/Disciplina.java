@@ -8,33 +8,28 @@
 package tutor;
 
 public class Disciplina {
-
 	private String disciplina;
 	private int proficiencia;
 
-	
 	public Disciplina(String nomeDisciplina, int proficiencia) {
 		if (nomeDisciplina == null || nomeDisciplina.trim().equals("")) {
 			throw new TutorException(new NullPointerException("Nome da disciplina nao pode ser null ou em branco."));
-		}
-		else if (proficiencia <= 0 || proficiencia > 5) {
-			throw new TutorException(new NumberFormatException("Proficiencia invalida, nao pode ser negativo nem acima de 5"));
+		} else if (proficiencia <= 0 || proficiencia > 5) {
+			throw new TutorException(
+					new NumberFormatException("Proficiencia invalida, nao pode ser negativo nem acima de 5"));
 		}
 		this.disciplina = nomeDisciplina;
 		this.proficiencia = proficiencia;
 	}
 
-	
 	public String getID() {
 		return this.disciplina;
 	}
 
-	
 	public int getProficiencia() {
 		return this.proficiencia;
 	}
 
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,7 +54,6 @@ public class Disciplina {
 			return false;
 		return true;
 	}
-
 
 	@Override
 	public String toString() {
