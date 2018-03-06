@@ -1,4 +1,4 @@
-package ajuda;
+package modelos.ajuda;
 
 @SuppressWarnings("serial")
 public class AjudaException extends RuntimeException {

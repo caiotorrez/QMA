@@ -1,4 +1,4 @@
-package ajuda;
+package modelos.ajuda;
 
 public abstract class Ajuda {
 	

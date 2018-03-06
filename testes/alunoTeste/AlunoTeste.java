@@ -11,8 +11,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import aluno.Aluno;
-import aluno.AlunoException;
+import modelos.aluno.Aluno;
+import modelos.aluno.AlunoException;
 
 /**
  * Classe de Testes, referentes a Aluno
@@ -109,6 +109,9 @@ public class AlunoTeste {
 		assertEquals("111222333 - Francis - 45 - 9999-9999 - francis@andrade.com", alunoTeste.toString());
 	}
 
+	/**
+	 * Teste do equals com Alunos de matriculas iguais.
+	 */
 	@Test
 	public void equalsMatriculasIguaisTeste() {
 		alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");
@@ -116,6 +119,9 @@ public class AlunoTeste {
 		assertEquals(true, alunoTeste.equals(alunoTeste2));
 	}
 
+	/**
+	 * Teste do equals com Alunos com matriculas diferentes.
+	 */
 	@Test
 	public void equalsMatriculasDiferentesTeste() {
 		alunoTeste = new Aluno("Francis", "111222333", 45, "9999-9999", "francis@andrade.com");

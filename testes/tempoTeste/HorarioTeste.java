@@ -9,8 +9,8 @@ package tempoTeste;
 
 import org.junit.Test;
 
-import tempo.Horario;
-import tempo.TempoException;
+import modelos.tempo.Horario;
+import modelos.tempo.TempoException;
 
 /**
  * Classe de Testes referente a Horario

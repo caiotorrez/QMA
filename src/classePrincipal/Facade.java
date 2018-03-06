@@ -4,6 +4,8 @@ import controladoresIO.ControllerAjuda;
 import controladoresIO.ControllerAluno;
 import controladoresIO.ControllerHorarioLocal;
 import controladoresIO.ControllerTutor;
+import fabrica.Fabrica;
+import fabrica.FabricaSistema;
 import servicos.ServiceAjuda;
 import servicos.ServiceAluno;
 import servicos.ServiceCaixaSistema;
@@ -11,18 +13,12 @@ import servicos.ServiceHorarioLocais;
 import servicos.ServiceTutor;
 
 public class Facade {
+	private Fabrica<FabricaSistema> fabricaSistema;
 	
-	private ServiceAluno serviceAluno = new ServiceAluno();
-	private ServiceTutor serviceTutor = new ServiceTutor(this.serviceAluno);
-	private ServiceHorarioLocais serviceHL = new ServiceHorarioLocais(this.serviceTutor);
-	private ServiceAjuda serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
-	private ServiceCaixaSistema serviceCaixa = new ServiceCaixaSistema();
-	private ControllerAluno alunoController = new ControllerAluno(this.serviceAluno);
-	private ControllerTutor tutorController = new ControllerTutor(this.serviceTutor);
-	private ControllerHorarioLocal horarioLocalController = new ControllerHorarioLocal(this.serviceHL);
-	private ControllerAjuda ajudaController = new ControllerAjuda(this.serviceAjuda);
-	private ControllerCaixa caixaController = new ControllerCaixa(this.serviceCaixa);
-	
+	public Facade() {
+		this.fabricaSistema = new FabricaSistema();
+		this.fabricaSistema.create();
+	}
 	
 	public void cadastrarAluno(String nome, String matricula, int codigoCurso, String telefone, String email) {
 		this.alunoController.cadastrarAluno(nome, matricula, codigoCurso, telefone, email);

@@ -3,8 +3,8 @@ package servicos;
 import java.util.HashMap;
 import java.util.Map;
 
-import tempo.Horario;
-import tempo.Local;
+import modelos.tempo.Horario;
+import modelos.tempo.Local;
 
 public class ServiceHorarioLocais {
 

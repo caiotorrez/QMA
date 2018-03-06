@@ -12,11 +12,11 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import aluno.Aluno;
-import tutor.TutorException;
-import tempo.Horario;
-import tutor.Disciplina;
-import tutor.Tutor;
+import modelos.aluno.Aluno;
+import modelos.tempo.Horario;
+import modelos.tutor.Disciplina;
+import modelos.tutor.Tutor;
+import modelos.tutor.TutorException;
 
 /**
  * Classe de Testes referente a Tutor

@@ -1,6 +1,6 @@
 package servicos;
 
-import caixaSistema.CaixaSistema;
+import modelos.caixaSistema.CaixaSistema;
 
 public class ServiceCaixaSistema {
 

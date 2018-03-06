@@ -1,4 +1,4 @@
-package caixaSistema;
+package modelos.caixaSistema;
 
 public class CaixaSistema {
 

@@ -1,6 +1,6 @@
 package controladoresIO;
 
-import aluno.Aluno;
+import modelos.aluno.Aluno;
 import servicos.ServiceAluno;
 
 public class ControllerAluno {

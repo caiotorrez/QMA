@@ -5,7 +5,7 @@
  * MATRICULAS -  -  - 116.110.100
  * PROJETO FINAL - QUEM ME AJUDA
  */
-package tutor;
+package modelos.tutor;
 
 public class Disciplina {
 	private String disciplina;

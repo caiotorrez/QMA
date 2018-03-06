@@ -1,4 +1,4 @@
-package tempo;
+package modelos.tempo;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package tutor;
+package modelos.tutor;
 
 @SuppressWarnings("serial")
 public class TutorException extends RuntimeException {

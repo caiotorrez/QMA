@@ -3,9 +3,9 @@ package servicos;
 import java.util.ArrayList;
 import java.util.List;
 
-import ajuda.Ajuda;
-import ajuda.AjudaOnline;
-import ajuda.AjudaPresencial;
+import modelos.ajuda.Ajuda;
+import modelos.ajuda.AjudaOnline;
+import modelos.ajuda.AjudaPresencial;
 
 public class ServiceAjuda {
 

@@ -1,4 +1,4 @@
-package ajuda;
+package modelos.ajuda;
 
 public class AjudaPresencial extends Ajuda {
 

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import tutor.Disciplina;
-import tutor.Tutor;
+import modelos.tutor.Disciplina;
+import modelos.tutor.Tutor;
 
 public class ServiceTutor {
 

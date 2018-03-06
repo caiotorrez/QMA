@@ -11,8 +11,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import tutor.TutorException;
-import tutor.Disciplina;
+import modelos.tutor.Disciplina;
+import modelos.tutor.TutorException;
 
 /**
  * Classe de Testes referente a Disciplina

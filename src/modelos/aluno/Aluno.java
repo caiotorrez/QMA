@@ -1,4 +1,4 @@
-package aluno;
+package modelos.aluno;
 
 public class Aluno implements Comparable<Aluno> {
 	private String nome;

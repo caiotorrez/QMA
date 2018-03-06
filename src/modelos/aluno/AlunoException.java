@@ -1,4 +1,4 @@
-package aluno;
+package modelos.aluno;
 
 @SuppressWarnings("serial")
 public class AlunoException extends RuntimeException {
