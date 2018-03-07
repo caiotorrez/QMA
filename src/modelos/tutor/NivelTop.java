@@ -1,12 +1,10 @@
 package modelos.tutor;
 
-import java.text.DecimalFormat;
-
 public class NivelTop implements Doacao {
 
 	@Override
 	public double getTaxa(double avaliacao) {
-		return Double.valueOf(new DecimalFormat("0.00").format(0.90 + ((avaliacao - 4.5) / 10)).replace(',', '.'));
+		return Double.valueOf(String.valueOf(0.90 + ((avaliacao - 4.5) / 10)).substring(0, 4).replace(',', '.'));
 	}
 	
 	@Override
