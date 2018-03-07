@@ -20,7 +20,7 @@ public class Tutor implements Comparable<Tutor> {
 	private Map<String, Disciplina> disciplinas;
 	private String matricula;
 	private String email;
-	private double avaliacao;
+	private Nivel nivel;
 	private int carteira;
 	private int id;
 
@@ -39,7 +39,7 @@ public class Tutor implements Comparable<Tutor> {
 		this.matricula = matricula;
 		this.email = email;
 		this.disciplinas.put(disciplina.getID(), disciplina);
-		this.avaliacao = 4.00;
+		this.nivel = new Nivel(4);
 		this.id = id;
 		this.carteira = 0;
 	}
@@ -76,29 +76,27 @@ public class Tutor implements Comparable<Tutor> {
 	}
 
 	public void addAvaliacao(int avaliacao) {
-		this.avaliacao = (this.avaliacao * 5 + avaliacao) / 6;
+		this.nivel.setAvaliacao(avaliacao);
 	}
 
 	public double getAvaliacao() {
-		return this.avaliacao;
+		return this.nivel.getAvaliacao();
+	}
+
+	public String getNivel() {
+		return this.nivel.getNivel();
+	}
+	
+	public double getTaxaAvaliacao() {
+		return this.nivel.getTaxa();
+	}
+
+	public void addDoacao(int valor) {
+		this.carteira += valor;
 	}
 
 	public int getCarteira() {
 		return this.carteira;
-	}
-
-	public void setCarteira(int valor) {
-		this.carteira += valor;
-	}
-
-	public String getNivel() {
-		if (this.avaliacao > 4.5) {
-			return "TOP";
-		} else if (this.avaliacao > 3) {
-			return "Tutor";
-		} else {
-			return "Aprendiz";
-		}
 	}
 
 	@Override
@@ -128,9 +126,9 @@ public class Tutor implements Comparable<Tutor> {
 
 	@Override
 	public int compareTo(Tutor outroTutor) {
-		if (this.avaliacao > outroTutor.getAvaliacao()) {
+		if (this.getAvaliacao() > outroTutor.getAvaliacao()) {
 			return -1;
-		} else if (this.avaliacao > outroTutor.avaliacao) {
+		} else if (this.getAvaliacao() > outroTutor.getAvaliacao()) {
 			return 1;
 		} else if (this.id < outroTutor.id) {
 			return -1;

@@ -2,17 +2,18 @@ package modelos.caixaSistema;
 
 public class CaixaSistema {
 
-	private int valorTotalCaixa;
+	private int caixaSistema;
 	
-	public CaixaSistema() {
-		this.valorTotalCaixa = 0;
+	public CaixaSistema(int valorInicial) {
+		this.caixaSistema = valorInicial;
 	}
 
 	public int getCaixa() {
-		return this.valorTotalCaixa;
+		return this.caixaSistema;
 	}
 	
-	public void setCaixa(int valor) {
-		this.valorTotalCaixa += valor;
+	public void addValor(int valor) {
+		this.caixaSistema += valor;
 	}
+	
 }

@@ -52,4 +52,12 @@ public class ServiceAluno {
 	public boolean containsAluno(String matricula) {
 		return this.alunos.containsKey(matricula);
 	}
+	
+	public String getMatricula(String email) {
+		for (String matricula : this.alunos.keySet()) {
+			if (this.alunos.get(matricula).getEmail().equals(email)) {
+				return matricula;
+			}
+		} return null;
+	}
 }

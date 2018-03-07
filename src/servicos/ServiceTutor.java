@@ -70,6 +70,10 @@ public class ServiceTutor {
 		}
 		return output;
 	}
+	
+	public String getMatricula(String email) {
+		return this.serviceAluno.getMatricula(email);
+	}
 
 	public String melhorTutorAvaliado(String[] matriculas) {
 		List<Tutor> tutores = new ArrayList<>();
@@ -98,5 +102,13 @@ public class ServiceTutor {
 
 	public String getNivel(String matricula) {
 		return this.tutores.get(matricula).getNivel();
+	}
+	
+	public double getTaxaAvaliacao(String matricula) {
+		return this.tutores.get(matricula).getTaxaAvaliacao();
+	}
+	
+	public void doar(String matricula, int valor) {
+		this.tutores.get(matricula).addDoacao(valor);
 	}
 }

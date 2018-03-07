@@ -1,8 +1,8 @@
 package fabrica;
 
-import classePrincipal.ControllerCaixa;
 import controladores.ControllerAjuda;
 import controladores.ControllerAluno;
+import controladores.ControllerCaixa;
 import controladores.ControllerHorarioLocal;
 import controladores.ControllerTutor;
 import servicos.ServiceAjuda;

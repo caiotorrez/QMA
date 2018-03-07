@@ -90,6 +90,6 @@ public class Facade {
 	}
 	
 	public int totalDinheiroSistema() {
-		return this.fabricaSistema.getCaixaController().retornaValorCaixa();
+		return this.fabricaSistema.getCaixaController().totalDinheiroSistema();
 	}
 }
