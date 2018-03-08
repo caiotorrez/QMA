@@ -74,7 +74,10 @@ public class Aluno implements Comparable<Aluno> {
 
 	@Override
 	public int compareTo(Aluno outroAluno) {
-		return this.nome.compareTo(outroAluno.nome);
+		int indice = this.nome.compareTo(outroAluno.nome);
+		if (indice == 0) {
+			return this.matricula.compareTo(outroAluno.matricula);
+		} return indice;
 	}
 
 	@Override

@@ -92,4 +92,8 @@ public class Facade {
 	public int totalDinheiroSistema() {
 		return this.fabricaSistema.getCaixaController().totalDinheiroSistema();
 	}
+	
+	public void configurarOrdem(String atributo) {
+		this.fabricaSistema.getAlunoController().configuraOrdem(atributo);
+	}
 }

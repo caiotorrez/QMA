@@ -45,4 +45,8 @@ public class ControllerAluno {
 		}
 		return this.serviceAluno.getInfoAluno(matricula, atributo.toLowerCase());
 	}
+	
+	public void configuraOrdem(String atributo) {
+		this.serviceAluno.setOrdem(atributo.toLowerCase());
+	}
 }

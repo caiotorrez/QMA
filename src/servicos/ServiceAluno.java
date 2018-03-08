@@ -6,15 +6,21 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import modelos.aluno.Aluno;
+import modelos.aluno.EmailComparator;
+import modelos.aluno.MatriculaComparator;
 
 public class ServiceAluno {
 	
 	private Map<String, Aluno> alunos;
+	private String atributoDeOrdenacao;
+	
 	
 	public ServiceAluno() {
 		this.alunos = new HashMap<>();
+		this.atributoDeOrdenacao = "nome";
 	}
 	
 	public void addAluno(Aluno aluno) {
@@ -59,5 +65,29 @@ public class ServiceAluno {
 				return matricula;
 			}
 		} return null;
+	}
+	
+	public String ordenacaoPersonalizada(Set<String> matriculas) {
+		
+		List<Aluno> lista = new ArrayList<>();
+		for (String matricula : matriculas) {
+			lista.add(this.alunos.get(matricula));
+		}
+		
+		if (this.atributoDeOrdenacao.equals("nome")) {
+			Collections.sort(lista);
+		}
+		else if (this.atributoDeOrdenacao.equals("email")) {
+			Collections.sort(lista, new EmailComparator());
+		}
+		else if (this.atributoDeOrdenacao.equals("matricula")) {
+			Collections.sort(lista, new MatriculaComparator());
+		}
+		String saida = Arrays.toString(lista.toArray());
+		return saida.substring(1, saida.length() - 1);
+	}
+	
+	public void setOrdem(String atributo) {
+		this.atributoDeOrdenacao = atributo;
 	}
 }

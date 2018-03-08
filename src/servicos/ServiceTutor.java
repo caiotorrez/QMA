@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import modelos.tutor.Disciplina;
 import modelos.tutor.Tutor;
@@ -28,7 +27,7 @@ public class ServiceTutor {
 			this.tutores.get(matricula).addDisciplina(new Disciplina(disciplina, proficiencia));
 		} else {
 			this.tutores.put(matricula, new Tutor(matricula, this.serviceAluno.getInfoAluno(matricula, "Email"),
-					new Disciplina(disciplina, proficiencia), this.tutores.size()));
+			new Disciplina(disciplina, proficiencia), this.tutores.size()));
 		}
 	}
 
@@ -47,21 +46,13 @@ public class ServiceTutor {
 	}
 
 	public String getAllTutores() {
-		String saida = "";
-		Map<String, String> tutores = new TreeMap<>();
-		for (String matricula : this.tutores.keySet()) {
-			tutores.put(this.serviceAluno.getInfoAluno(matricula, "nome"), this.serviceAluno.toStringAluno(matricula));
-		}
-		for (String toString : tutores.values()) {
-			saida += toString + ", ";
-		}
-		return saida.equals("") ? "Nao ha tutores cadastrados" : saida.substring(0, saida.length() - 2);
+		return this.serviceAluno.ordenacaoPersonalizada(this.tutores.keySet());
 	}
 
 	public boolean containsTutor(String matricula) {
 		return this.tutores.containsKey(matricula);
 	}
-
+	
 	public String searchTutor(String disciplina) {
 		String output = "";
 		for (Tutor tutor : this.tutores.values()) {
