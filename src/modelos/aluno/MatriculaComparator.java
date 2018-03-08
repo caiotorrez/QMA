@@ -2,6 +2,7 @@ package modelos.aluno;
 
 import java.util.Comparator;
 
+
 public class MatriculaComparator implements Comparator<Aluno> {
 	
 	@Override
@@ -9,3 +10,4 @@ public class MatriculaComparator implements Comparator<Aluno> {
 		return aluno.getMatricula().compareTo(outroAluno.getMatricula());
 	}
 }
+	

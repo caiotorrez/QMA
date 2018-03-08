@@ -1,12 +1,14 @@
 package servicos;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import modelos.tempo.Horario;
 import modelos.tempo.Local;
 
-public class ServiceHorarioLocais {
+@SuppressWarnings("serial")
+public class ServiceHorarioLocais implements Serializable {
 
 	private ServiceTutor serviceTutor;
 	private Map<String, Local> locaisAtendimento;

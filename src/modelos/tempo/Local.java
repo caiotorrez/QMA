@@ -1,9 +1,11 @@
 package modelos.tempo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Local {
+@SuppressWarnings("serial")
+public class Local implements Serializable {
 	
 	private Set<String> locais;
 	

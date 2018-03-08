@@ -1,9 +1,11 @@
 package modelos.tempo;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Horario {
+@SuppressWarnings("serial")
+public class Horario implements Serializable {
 	
 	private Map<String, String> database;
 	

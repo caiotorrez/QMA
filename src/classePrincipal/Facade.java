@@ -96,4 +96,15 @@ public class Facade {
 	public void configurarOrdem(String atributo) {
 		this.fabricaSistema.getAlunoController().configuraOrdem(atributo);
 	}
+	
+	public void salvar()  {
+		this.fabricaSistema.salvarSistema();
+	}
+	public void carregar() {
+		this.fabricaSistema.carregarSistema();
+	}
+	public void limpar() {
+		// falta implementar, preguiça, ainda preciso testar o save e load
+	}
+	
 }

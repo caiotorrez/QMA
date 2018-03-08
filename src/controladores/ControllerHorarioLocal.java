@@ -2,6 +2,7 @@ package controladores;
 
 import servicos.ServiceHorarioLocais;
 
+
 public class ControllerHorarioLocal {
 	
 	private ServiceHorarioLocais serviceHL;

@@ -2,6 +2,7 @@ package modelos.aluno;
 
 import java.util.Comparator;
 
+
 public class EmailComparator implements Comparator<Aluno> {
 
 	@Override

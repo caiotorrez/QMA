@@ -1,5 +1,6 @@
 package servicos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,8 @@ import modelos.ajuda.Ajuda;
 import modelos.ajuda.AjudaOnline;
 import modelos.ajuda.AjudaPresencial;
 
-public class ServiceAjuda {
+@SuppressWarnings("serial")
+public class ServiceAjuda implements Serializable {
 
 	private ServiceTutor serviceTutor;
 	private ServiceHorarioLocais serviceHL;

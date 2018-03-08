@@ -7,6 +7,7 @@
  */
 package modelos.tutor;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,8 @@ import java.util.Map;
  * @author Caio Torres
  * @version 1.0
  */
-public class Tutor implements Comparable<Tutor> {
+@SuppressWarnings("serial")
+public class Tutor implements Comparable<Tutor>, Serializable {
 	private Map<String, Disciplina> disciplinas;
 	private String matricula;
 	private String email;

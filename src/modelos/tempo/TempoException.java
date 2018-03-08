@@ -1,5 +1,6 @@
 package modelos.tempo;
 
+
 @SuppressWarnings("serial")
 public class TempoException extends RuntimeException {
 	

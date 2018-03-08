@@ -1,6 +1,9 @@
 package modelos.tutor;
 
-public class NivelAprendiz implements Doacao {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class NivelAprendiz implements Doacao, Serializable {
 
 	public double getTaxa(double avaliacao) {
 		return Double.valueOf(String.valueOf(0.4 + ((avaliacao - 3) / 10)).substring(0, 4).replace(',', '.'));

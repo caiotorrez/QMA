@@ -1,5 +1,6 @@
 package servicos;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +11,8 @@ import java.util.Map;
 import modelos.tutor.Disciplina;
 import modelos.tutor.Tutor;
 
-public class ServiceTutor {
+@SuppressWarnings("serial")
+public class ServiceTutor implements Serializable {
 
 	private ServiceAluno serviceAluno;
 	private Map<String, Tutor> tutores;

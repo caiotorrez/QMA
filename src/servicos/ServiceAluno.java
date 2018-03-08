@@ -1,5 +1,6 @@
 package servicos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,8 +13,12 @@ import modelos.aluno.Aluno;
 import modelos.aluno.EmailComparator;
 import modelos.aluno.MatriculaComparator;
 
-public class ServiceAluno {
+public class ServiceAluno implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Map<String, Aluno> alunos;
 	private String atributoDeOrdenacao;
 	

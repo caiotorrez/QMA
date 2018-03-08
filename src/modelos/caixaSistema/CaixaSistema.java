@@ -1,6 +1,9 @@
 package modelos.caixaSistema;
 
-public class CaixaSistema {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class CaixaSistema implements Serializable {
 
 	private int caixaSistema;
 	

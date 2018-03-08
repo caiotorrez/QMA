@@ -1,9 +1,12 @@
 package servicos;
 
+import java.io.Serializable;
+
 import modelos.caixaSistema.CaixaSistema;
 import servicos.ServiceTutor;
 
-public class ServiceCaixaSistema {
+@SuppressWarnings("serial")
+public class ServiceCaixaSistema implements Serializable {
 	
 	private CaixaSistema caixa;
 	private ServiceTutor serviceTutor;

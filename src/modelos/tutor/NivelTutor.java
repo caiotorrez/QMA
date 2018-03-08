@@ -1,6 +1,9 @@
 package modelos.tutor;
 
-public class NivelTutor implements Doacao {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class NivelTutor implements Doacao, Serializable {
 
 	@Override
 	public double getTaxa(double avaliacao) {

@@ -1,6 +1,9 @@
 package modelos.ajuda;
 
-public abstract class Ajuda {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public abstract class Ajuda implements Serializable {
 	
 	
 	private String disciplina;

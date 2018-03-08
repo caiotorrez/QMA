@@ -1,6 +1,9 @@
 package modelos.aluno;
 
-public class Aluno implements Comparable<Aluno> {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Aluno implements Comparable<Aluno>, Serializable {
 	private String nome;
 	private String matricula;
 	private int codigoCurso;

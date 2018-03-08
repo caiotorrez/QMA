@@ -1,5 +1,6 @@
 package modelos.ajuda;
 
+@SuppressWarnings("serial")
 public class AjudaPresencial extends Ajuda {
 
 	private String horario;

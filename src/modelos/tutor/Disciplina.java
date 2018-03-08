@@ -7,7 +7,10 @@
  */
 package modelos.tutor;
 
-public class Disciplina {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Disciplina implements Serializable {
 	private String disciplina;
 	private int proficiencia;
 

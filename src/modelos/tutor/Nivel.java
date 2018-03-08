@@ -1,6 +1,9 @@
 package modelos.tutor;
 
-public class Nivel {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Nivel implements Serializable {
 	
 	private double avaliacao;
 	private Doacao nivel;
