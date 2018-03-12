@@ -170,6 +170,12 @@ public class TutorTest {
 		assertEquals("Lab. de Prog. 2 - 3" + System.lineSeparator() + "Programacao 2 - 4" + System.lineSeparator(),
 				tutorTeste.exibeDisciplinas());
 	}
+	
+	@Test
+	public void efetuarDoacaoTeste() {
+		tutorTeste.addDoacao(100);
+		assertEquals(100, tutorTeste.getCarteira());
+	}
 
 	/**
 	 * Testa a representacao textual do Tutor
