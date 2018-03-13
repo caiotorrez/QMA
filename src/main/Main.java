@@ -25,6 +25,5 @@ public class Main {
 								"testesAceitacao/us3_test.txt", "testesAceitacao/us4_test.txt", "testesAceitacao/us5_test.txt",
 									"testesAceitacao/us6_test.txt"};
 		EasyAccept.main(args);
-
 	}
 }

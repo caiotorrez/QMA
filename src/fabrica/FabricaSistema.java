@@ -21,7 +21,11 @@ import servicos.ServiceTutor;
 @SuppressWarnings("serial")
 public final class FabricaSistema implements Serializable {
 
-	private ObjectOutputStream gravador;
+	private ObjectOutputStream saveAluno;
+	private ObjectOutputStream saveTutor;
+	private ObjectOutputStream saveHL;
+	private ObjectOutputStream saveAjuda;
+	private ObjectOutputStream saveCaixa;
 	private ObjectInputStream leitor;
 	private ServiceAluno serviceAluno;
 	private ServiceTutor serviceTutor;
@@ -34,35 +38,37 @@ public final class FabricaSistema implements Serializable {
 	private ControllerAjuda ajudaController;
 	private ControllerCaixa caixaController;
 
+
 	public void salvarSistema() {
 		try {
-			this.gravador = new ObjectOutputStream(new FileOutputStream("serviceTutor.ser"));
-			this.gravador.writeObject(this.serviceAluno);
-			
-			this.gravador = new ObjectOutputStream(new FileOutputStream("serviceTutor.ser"));
-			this.gravador.writeObject(this.serviceTutor);
-			
-			this.gravador = new ObjectOutputStream(new FileOutputStream("serviceHL.ser"));
-			this.gravador.writeObject(this.serviceHL);
-			
-			this.gravador = new ObjectOutputStream(new FileOutputStream("serviceAjuda.ser"));
-			this.gravador.writeObject(this.serviceAjuda);
-			
-			this.gravador = new ObjectOutputStream(new FileOutputStream("serviceCaixa.ser"));
-			this.gravador.writeObject(this.serviceCaixa);
-			
-			System.out.println("Deu certo");
+			this.saveAluno.writeObject(this.serviceAluno);
+			this.saveTutor.writeObject(this.serviceTutor);
+			this.saveHL.writeObject(this.serviceHL);
+			this.saveAjuda.writeObject(this.serviceAjuda);
+			this.saveCaixa.writeObject(this.serviceCaixa);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void carregarSistema() {
-		this.serviceTutor = (ServiceTutor) leitura("serviceAluno.ser");
-		this.serviceTutor = (ServiceTutor) leitura("serviceTutor.ser");
-		this.serviceHL = (ServiceHorarioLocais) leitura("serviceHL.ser");
-		this.serviceAjuda = (ServiceAjuda) leitura("serviceAjuda.ser");
-		this.serviceCaixa = (ServiceCaixaSistema) leitura("serviceCaixa.ser");
+		this.alunoController = new ControllerAluno((ServiceAluno) leitura("serviceAluno.ser"));
+		this.tutorController = new ControllerTutor((ServiceTutor) leitura("serviceTutor.ser"));
+		this.horarioLocalController = new ControllerHorarioLocal((ServiceHorarioLocais) leitura("serviceHL.ser"));
+		this.ajudaController = new ControllerAjuda((ServiceAjuda) leitura("serviceAjuda.ser"));
+		this.caixaController = new ControllerCaixa((ServiceCaixaSistema) leitura("serviceCaixa.ser"));
+	}
+	
+	public void limparSistema() {
+		try {
+			this.saveAluno.reset();
+			this.saveTutor.reset();
+			this.saveHL.reset();
+			this.saveAjuda.reset();
+			this.saveCaixa.reset();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private Object leitura(String arquivo) {
@@ -85,22 +91,26 @@ public final class FabricaSistema implements Serializable {
 
 	public void create() {
 		try {
-			this.gravador = new ObjectOutputStream(new FileOutputStream("Sistema.ser"));
+			this.saveAluno = new ObjectOutputStream(new FileOutputStream("serviceAluno.ser"));
+			this.saveTutor = new ObjectOutputStream(new FileOutputStream("serviceTutor.ser"));
+			this.saveHL = new ObjectOutputStream(new FileOutputStream("serviceHL.ser"));
+			this.saveAjuda = new ObjectOutputStream(new FileOutputStream("serviceAjuda.ser"));
+			this.saveCaixa = new ObjectOutputStream(new FileOutputStream("serviceCaixa.ser"));
+			this.serviceAluno = new ServiceAluno();
+			this.serviceTutor = new ServiceTutor(this.serviceAluno);
+			this.serviceHL = new ServiceHorarioLocais(this.serviceTutor);
+			this.serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
+			this.serviceCaixa = new ServiceCaixaSistema(this.serviceTutor);
+			this.alunoController = new ControllerAluno(this.serviceAluno);
+			this.tutorController = new ControllerTutor(this.serviceTutor);
+			this.horarioLocalController = new ControllerHorarioLocal(this.serviceHL);
+			this.ajudaController = new ControllerAjuda(this.serviceAjuda);
+			this.caixaController = new ControllerCaixa(this.serviceCaixa);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.serviceAluno = new ServiceAluno();
-		this.serviceTutor = new ServiceTutor(this.serviceAluno);
-		this.serviceHL = new ServiceHorarioLocais(this.serviceTutor);
-		this.serviceAjuda = new ServiceAjuda(this.serviceTutor, this.serviceHL, this.serviceAluno);
-		this.serviceCaixa = new ServiceCaixaSistema(this.serviceTutor);
-		this.alunoController = new ControllerAluno(this.serviceAluno);
-		this.tutorController = new ControllerTutor(this.serviceTutor);
-		this.horarioLocalController = new ControllerHorarioLocal(this.serviceHL);
-		this.ajudaController = new ControllerAjuda(this.serviceAjuda);
-		this.caixaController = new ControllerCaixa(this.serviceCaixa);
 	}
-	
+
 	public ControllerAluno getAlunoController() {
 		return this.alunoController;
 	}

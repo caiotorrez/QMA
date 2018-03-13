@@ -104,7 +104,7 @@ public class Facade {
 		this.fabricaSistema.carregarSistema();
 	}
 	public void limpar() {
-		// falta implementar, preguiça, ainda preciso testar o save e load
+		this.fabricaSistema.limparSistema();
 	}
 	
 }
