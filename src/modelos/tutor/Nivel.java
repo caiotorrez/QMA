@@ -21,6 +21,9 @@ public class Nivel implements Serializable {
 	}
 	
 	public Nivel(double avaliacao) {
+		if (avaliacao < 0 || avaliacao > 5) {
+			throw new NumberFormatException("Nota de avaliacao fora do limite.");
+		}
 		this.avaliacao = avaliacao;
 		this.setNivel();
 	}
@@ -30,6 +33,9 @@ public class Nivel implements Serializable {
 	}
 	
 	public void setAvaliacao(int avaliacao) {
+		if (avaliacao < 0 || avaliacao > 5) {
+			throw new NumberFormatException("Nota de avaliacao fora do limite.");
+		}
 		this.avaliacao = (this.avaliacao * 5 + avaliacao) / 6;
 		this.setNivel();
 	}
