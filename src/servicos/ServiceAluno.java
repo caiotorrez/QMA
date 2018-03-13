@@ -13,14 +13,11 @@ import modelos.aluno.Aluno;
 import modelos.aluno.EmailComparator;
 import modelos.aluno.MatriculaComparator;
 
+@SuppressWarnings("serial")
 public class ServiceAluno implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Map<String, Aluno> alunos;
-	private String atributoDeOrdenacao;
+	private transient String atributoDeOrdenacao;
 	
 	
 	public ServiceAluno() {
@@ -73,7 +70,9 @@ public class ServiceAluno implements Serializable {
 	}
 	
 	public String ordenacaoPersonalizada(Set<String> matriculas) {
-		
+		if (this.atributoDeOrdenacao == null) {
+			this.atributoDeOrdenacao = "nome";
+		}
 		List<Aluno> lista = new ArrayList<>();
 		for (String matricula : matriculas) {
 			lista.add(this.alunos.get(matricula));

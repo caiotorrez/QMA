@@ -60,15 +60,7 @@ public final class FabricaSistema implements Serializable {
 	}
 	
 	public void limparSistema() {
-		try {
-			this.saveAluno.reset();
-			this.saveTutor.reset();
-			this.saveHL.reset();
-			this.saveAjuda.reset();
-			this.saveCaixa.reset();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.create();
 	}
 	
 	private Object leitura(String arquivo) {
@@ -130,5 +122,4 @@ public final class FabricaSistema implements Serializable {
 	public ControllerCaixa getCaixaController() {
 		return this.caixaController;
 	}
-
 }
