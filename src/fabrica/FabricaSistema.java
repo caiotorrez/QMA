@@ -52,11 +52,15 @@ public final class FabricaSistema implements Serializable {
 	}
 	
 	public void carregarSistema() {
-		this.alunoController = new ControllerAluno((ServiceAluno) leitura("serviceAluno.ser"));
-		this.tutorController = new ControllerTutor((ServiceTutor) leitura("serviceTutor.ser"));
-		this.horarioLocalController = new ControllerHorarioLocal((ServiceHorarioLocais) leitura("serviceHL.ser"));
-		this.ajudaController = new ControllerAjuda((ServiceAjuda) leitura("serviceAjuda.ser"));
-		this.caixaController = new ControllerCaixa((ServiceCaixaSistema) leitura("serviceCaixa.ser"));
+		try {
+			this.alunoController = new ControllerAluno((ServiceAluno) leitura("serviceAluno.ser"));
+			this.tutorController = new ControllerTutor((ServiceTutor) leitura("serviceTutor.ser"));
+			this.horarioLocalController = new ControllerHorarioLocal((ServiceHorarioLocais) leitura("serviceHL.ser"));
+			this.ajudaController = new ControllerAjuda((ServiceAjuda) leitura("serviceAjuda.ser"));
+			this.caixaController = new ControllerCaixa((ServiceCaixaSistema) leitura("serviceCaixa.ser"));
+		} catch (Exception e) {
+			System.err.println("Erro ao carregar sistema, nao ha sistema salvo.");
+		}
 	}
 	
 	public void limparSistema() {
@@ -69,10 +73,10 @@ public final class FabricaSistema implements Serializable {
 			try {
 				return this.leitor.readObject();
 			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+				System.err.println("Erro ao ler arquivo, " + e.getMessage());
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Erro ao ler arquivo, " + e.getMessage());
 		}
 		return null;
 	}
