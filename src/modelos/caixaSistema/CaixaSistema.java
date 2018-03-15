@@ -21,7 +21,11 @@ public class CaixaSistema implements Serializable {
      * @param valorInicial, Integer
      */
     public CaixaSistema(int valorInicial) {
-        this.caixaSistema = valorInicial;
+    	if (valorInicial < 0) {
+    		throw new CaixaException("O valor inicial do caixa nao pode ser menor do que 0");
+    	} else {
+    		this.caixaSistema = valorInicial;    		
+    	}
     }
     /**
      * Retorna o valor atual do caixa
@@ -36,7 +40,11 @@ public class CaixaSistema implements Serializable {
      * @param valor, Integer
      */
     public void addValor(int valor) {
-        this.caixaSistema += valor;
+    	if (valor < 0) {
+    		throw new CaixaException("Nao pode adcionar valores negativos ao caixa");
+    	} else {
+    		this.caixaSistema += valor;    		
+    	}
     }
     
 }

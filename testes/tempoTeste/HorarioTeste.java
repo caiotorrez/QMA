@@ -15,7 +15,7 @@ import modelos.tempo.TempoException;
 /**
  * Classe de Testes referente a Horario
  * 
- * @author
+ * @author Francis Cabral
  * @version 1.0
  *
  */

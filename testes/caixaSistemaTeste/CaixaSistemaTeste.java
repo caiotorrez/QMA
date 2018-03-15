@@ -1,25 +1,55 @@
+/**
+ * UFCG - Universidade Federal de Campina Grande
+ * LP2 - Laboratorio de Programacao 2 - Projeto Final
+ * Caio Vitor Brasileiro Torres - 116111245
+ * Francivaldo Cabral de Andrade - 116111544
+ * Luan Carlos da Silva Bezerra - 116110100
+ */
 package caixaSistemaTeste;
-
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import modelos.caixaSistema.CaixaException;
 import modelos.caixaSistema.CaixaSistema;
 
+/**
+ * Classe de Testes, referentes ao {@link CaixaSistema}
+ * 
+ * @author Caio Torres
+ * @version 1.0
+ */
 public class CaixaSistemaTeste {
 
-	private CaixaSistema caixa;
-	private CaixaSistema caixa2;
+	private CaixaSistema caixa = new CaixaSistema(0);
 	
+	/**
+	 * Testa a criacao do caixa com valor negativo
+	 */
+	@Test(expected = CaixaException.class)
+	public void criarCaixaInvalidoTeste() {
+		this.caixa = new CaixaSistema(-1);
+	}
+	
+	/**
+	 * Testa a criacao do caixa com valor valido
+	 */
+	public void criarCaixaValidoTeste() {
+		this.caixa = new CaixaSistema(0);
+	}
+	
+	/**
+	 * Testa a adicao de valor negativo ao caixa
+	 */
+	@Test(expected = CaixaException.class)
+	public void adicionaValorAoCaixaNegativoTest() {
+		this.caixa.addValor(-1);
+	}
+	
+	/**
+	 * Testa a adicao de valor valido ao caixa
+	 */
 	@Test
-	public void adicionaValorAoCaixaTest() {
-		caixa = new CaixaSistema(0);
-		caixa2 = new CaixaSistema(100);
-		assertEquals(0, caixa.getCaixa());
-		caixa.addValor(100);
-		assertEquals(100, caixa.getCaixa());
-		assertEquals(100, caixa2.getCaixa());
-		caixa2.addValor(100);
-		assertEquals(200, caixa2.getCaixa());
+	public void adicionaValorAoCaixaValidoTest() {
+		this.caixa.addValor(1);
 	}
 }

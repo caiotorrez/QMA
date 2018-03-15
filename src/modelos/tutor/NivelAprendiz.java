@@ -14,6 +14,7 @@ import java.io.Serializable;
  */
 @SuppressWarnings("serial")
 public class NivelAprendiz implements Doacao, Serializable {
+	
     /**
      * Retorna a taxa atribuida ao tutor em funcao da sua avaliacao
      */

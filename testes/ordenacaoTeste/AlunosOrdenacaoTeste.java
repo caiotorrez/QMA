@@ -1,3 +1,10 @@
+/**
+ * UFCG - Universidade Federal de Campina Grande
+ * LP2 - Laboratorio de Programacao 2 - Projeto Final
+ * Caio Vitor Brasileiro Torres - 116111245
+ * Francivaldo Cabral de Andrade - 116111544
+ * Luan Carlos da Silva Bezerra - 116110100
+ */
 package ordenacaoTeste;
 
 import java.util.ArrayList;
@@ -10,12 +17,18 @@ import modelos.aluno.Aluno;
 import modelos.aluno.EmailComparator;
 import modelos.aluno.MatriculaComparator;
 
+/**
+ * Teste referente a checagem das ordenações e sao checados a olho
+ * @author Caio Torres
+ *
+ */
 public class AlunosOrdenacaoTeste {
 
-	
-	
 	public List<Aluno> alunos = new ArrayList<>();
 	
+	/**
+	 * Testa Listagem por ordenacao natural alfabética
+	 */
 	@Test
 	public void testOrdenacaoNatural() {
 		System.out.println("################NOME#####################");
@@ -32,6 +45,9 @@ public class AlunosOrdenacaoTeste {
 
 	}
 	
+	/**
+	 * Testa Listagem por ordenacao passando comparator email
+	 */
 	@Test
 	public void testOrdenacaoEmail() {
 		System.out.println("################EMAIL#####################");
@@ -47,6 +63,9 @@ public class AlunosOrdenacaoTeste {
 		}
 	}
 
+	/**
+	 * Testa Listagem por ordenacao passando comparator Matricula
+	 */
 	@Test
 	public void testOrdenacaoMatricula() {
 		System.out.println("################MATRICULA#####################");

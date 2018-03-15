@@ -21,7 +21,7 @@ import modelos.tutor.TutorException;
 /**
  * Classe de Testes referente a Tutor
  * 
- * @author
+ * @author Francis Cabral
  * @version 1.3
  * @author Luan Carlos
  */

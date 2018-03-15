@@ -54,6 +54,9 @@ public class Horario implements Serializable {
     }
     
     public String getHorario(String dia) {
+    	if (dia == null || dia.trim().equals("")) {
+    		throw new TempoException(new NullPointerException("Erro ao recuperar horario: dia nao pode ser null ou em branco."));
+    	}
         if (!this.database.containsKey(dia)) {
             throw new TempoException(new IllegalArgumentException("Erro ao recuperar horario: Dia nao cadastrado."));
         }
@@ -90,6 +93,9 @@ public class Horario implements Serializable {
      * @return boolean
      */
     public boolean contemDia(String dia) {
+    	if (dia == null || dia.trim().equals("")) {
+    		throw new TempoException(new NullPointerException("Erro ao verificar horario: dia nao pode ser null ou em branco."));
+    	}
         return this.database.containsKey(dia);
     }
 }

@@ -167,6 +167,7 @@ public class Tutor implements Comparable<Tutor>, Serializable {
             return false;
         return true;
     }
+    
     /**
      * Forma de comparacao entre tutores
      */
@@ -183,6 +184,7 @@ public class Tutor implements Comparable<Tutor>, Serializable {
         }
         return 0;
     }
+    
     /**
      * Retorna a representacao textual de Tutor
      * @return String

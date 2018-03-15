@@ -17,7 +17,7 @@ import modelos.tutor.TutorException;
 /**
  * Classe de Testes referente a Disciplina
  * 
- * @author
+ * @author Francis Cabral
  * @version 1.0
  *
  */
@@ -31,7 +31,7 @@ public class DisciplinaTeste {
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
-	public void disciplinaNomeNuloTeste() throws Exception {
+	public void disciplinaNomeNuloTeste() {
 		disciplinaTeste = new Disciplina(null, 5);
 	}
 
@@ -41,7 +41,7 @@ public class DisciplinaTeste {
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
-	public void disciplinaNomeVazioTeste() throws Exception {
+	public void disciplinaNomeVazioTeste() {
 		disciplinaTeste = new Disciplina(" ", 5);
 	}
 
@@ -51,7 +51,7 @@ public class DisciplinaTeste {
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
-	public void disciplinaProficienciaInvalidaTeste() throws Exception {
+	public void disciplinaProficienciaInvalidaTeste() {
 		disciplinaTeste = new Disciplina("Programacao", 6);
 	}
 
@@ -61,7 +61,7 @@ public class DisciplinaTeste {
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
-	public void disciplinaProficienciaZeroTeste() throws Exception {
+	public void disciplinaProficienciaZeroTeste() {
 		disciplinaTeste = new Disciplina("Programacao", 0);
 	}
 
@@ -71,7 +71,7 @@ public class DisciplinaTeste {
 	 * @throws Exception
 	 */
 	@Test(expected = TutorException.class)
-	public void disciplinaProficienciaNegativaTeste() throws Exception {
+	public void disciplinaProficienciaNegativaTeste() {
 		disciplinaTeste = new Disciplina("Programacao", -1);
 	}
 
@@ -81,22 +81,22 @@ public class DisciplinaTeste {
 	 * @throws Exception
 	 */
 	@Test
-	public void toStringTeste() throws Exception {
-		disciplinaTeste = new Disciplina("Programação 2", 4);
-		assertEquals("Programação 2 - 4", disciplinaTeste.toString());
+	public void toStringTeste() {
+		disciplinaTeste = new Disciplina("Programacao 2", 4);
+		assertEquals("Programacao 2 - 4", disciplinaTeste.toString());
 	}
 
 	@Test
 	public void equalsNomeDisciplinasIguaisTeste() {
-		disciplinaTeste = new Disciplina("Programação 2", 4);
-		disciplinaTeste2 = new Disciplina("Programação 2", 5);
+		disciplinaTeste = new Disciplina("Programacao 2", 4);
+		disciplinaTeste2 = new Disciplina("Programacao 2", 5);
 		assertEquals(true, disciplinaTeste.equals(disciplinaTeste2));
 	}
 	
 	@Test
 	public void equalsNomeDisciplinasDiferentesTeste() {
-		disciplinaTeste = new Disciplina("Programação 2", 4);
-		disciplinaTeste2 = new Disciplina("Programação 1", 5);
+		disciplinaTeste = new Disciplina("Programacao 2", 4);
+		disciplinaTeste2 = new Disciplina("Programacao 1", 5);
 		assertEquals(false, disciplinaTeste.equals(disciplinaTeste2));
 	}
 

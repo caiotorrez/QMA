@@ -20,10 +20,21 @@ public class Local implements Serializable {
     private Set<String> locais;
     
     /**
+     * Checa se o atributo local passado eh valido.
+     * @param local
+     */
+    private void checkLocal(String local) {
+    	if (local == null || local.trim().equals("")) {
+    		throw new LocalException(new NullPointerException("Local nao pode ser null ou em branco"));
+    	}
+    }
+    
+    /**
      * Construtor de Local
      * @param local, String
      */
     public Local(String local) {
+    	this.checkLocal(local);
         this.locais = new HashSet<>();
         this.addLocal(local);
     }
@@ -33,16 +44,14 @@ public class Local implements Serializable {
      * @param local, String
      */
     public void addLocal(String local) {
-        this.locais.add(local);
+    	this.checkLocal(local);
+    	if (this.contemLocal(local)) {
+    		throw new LocalException("Esse local ja esta adcionado.");
+    	} else {
+    		this.locais.add(local);    		
+    	}
     }
     
-    /**
-     * Remove um local do banco de dados de locais
-     * @param local, String
-     */
-    public void removeLocal(String local) {
-        this.locais.remove(local);
-    }
     
     /**
      * Verifica a existencia de um local, por meio do seu nome
@@ -50,6 +59,7 @@ public class Local implements Serializable {
      * @return boolean
      */
     public boolean contemLocal(String local) {
+    	this.checkLocal(local);
         return this.locais.contains(local);
     }
 }

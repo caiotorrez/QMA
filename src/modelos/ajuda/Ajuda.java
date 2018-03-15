@@ -1,14 +1,14 @@
 /**
  * UFCG - Universidade Federal de Campina Grande
  * LP2 - Laboratorio de Programacao 2 - Projeto Final
- * Caio Vitor Brasileiro Torres – 116111245
- * Francivaldo Cabral de Andrade – 116111544
+ * Caio Vitor Brasileiro Torres - 116111245
+ * Francivaldo Cabral de Andrade - 116111544
  * Luan Carlos da Silva Bezerra - 116110100
  */
 package modelos.ajuda;
 import java.io.Serializable;
 /**
- * Classe Ajuda, armazena atributos de Ajuda
+ * Classe Ajuda, � uma classe abstrata que assegura uma ajuda a um determinado aluno/tutor.
  * @author Caio Torres
  * @version 1.3
  */
@@ -44,7 +44,11 @@ public abstract class Ajuda implements Serializable {
      * @param matriculaTutor, String
      */
     public void setMatriculaTutor(String matriculaTutor) {
-        this.matriculaTutor = matriculaTutor;
+    	if (matriculaTutor == null || matriculaTutor.trim().equals("")) {
+    		throw new AjudaException(new NullPointerException("Matricula de tutor nao pode ser nula ou vazia."));
+    	} else {
+    		this.matriculaTutor = matriculaTutor;    		
+    	}
     }
     /**
      * Retorna a matricula do Tutor responsavel
