@@ -12,12 +12,12 @@ public class LocalTest {
 	
 	@Before
 	public void setUp() {
-		localTeste = new Local("Serra do Jatobá");
+		localTeste = new Local("Serra do Jaboatao");
 	}
 	
 	@Test
 	public void contemLocalTeste() {
-		assertEquals(true, localTeste.contemLocal("Serra do Jatobá"));
+		assertEquals(true, localTeste.contemLocal("Serra do Jaboatao"));
 	}
 	
 	@Test
