@@ -5,7 +5,7 @@
  * Francivaldo Cabral de Andrade - 116111544
  * Luan Carlos da Silva Bezerra - 116110100
  */
-package ajudaTestes;
+package ajudaTeste;
 
 import static org.junit.Assert.assertEquals;
 

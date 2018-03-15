@@ -5,7 +5,7 @@
  * Francivaldo Cabral de Andrade - 116111544
  * Luan Carlos da Silva Bezerra - 116110100
  */
-package ordenacaoTeste;
+package alunoTeste;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import modelos.aluno.EmailComparator;
 import modelos.aluno.MatriculaComparator;
 
 /**
- * Teste referente a checagem das ordenações e sao checados a olho
+ * Teste referente a checagem das ordenaï¿½ï¿½es e sao checados a olho
  * @author Caio Torres
  *
  */
@@ -27,7 +27,7 @@ public class AlunosOrdenacaoTeste {
 	public List<Aluno> alunos = new ArrayList<>();
 	
 	/**
-	 * Testa Listagem por ordenacao natural alfabética
+	 * Testa Listagem por ordenacao natural alfabï¿½tica
 	 */
 	@Test
 	public void testOrdenacaoNatural() {
