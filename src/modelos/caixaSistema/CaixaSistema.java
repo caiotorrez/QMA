@@ -2,6 +2,10 @@ package modelos.caixaSistema;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Luan Carlos
+ */
 @SuppressWarnings("serial")
 public class CaixaSistema implements Serializable {
 
